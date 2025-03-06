@@ -1,141 +1,286 @@
-body {
-    font-family: sans-serif;
+/* Reset básico e tipografia */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    box-sizing: border-box;
 }
 
-header {
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* Header e Footer */
+header,
+footer {
     background-color: #333;
     color: #fff;
-    padding: 30px 0;
+    padding: 20px 0;
     text-align: center;
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
-    padding: 15px 0;
-    text-align: center;
+    font-size: 14px;
 }
 
+/* Navegação */
 nav ul {
     list-style: none;
-    padding: 0;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
     margin: 0;
 }
 
 nav ul li {
-    display: inline;
     margin: 0 15px;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
+nav ul li a:hover {
+    color: #007bff;
+}
+
+/* Seções */
 .secao {
     padding: 40px 20px;
     text-align: center;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .secao h2 {
     margin-bottom: 20px;
+    font-size: 2rem;
 }
 
-#projects button, #contact button {
-    padding: 10px 20px;
-    margin: 5px;
+/* Estilo para a estrelinha entre a imagem de perfil e o título "About me" */
+.estrelinha {
+    font-size: 3rem;
+    color: #007bff;
+    margin: 20px 0;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Botões */
+button,
+.btn {
+    padding: 12px 25px;
     border: none;
-    background-color: #e0e0e0;
-    cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-#projects button:hover, #contact button:hover {
-    background-color: #d0d0d0;
+button:hover,
+.btn:hover {
+    background-color: #0056b3;
 }
 
+#projects button,
+#contact button {
+    background-color: #007bff;
+    color: #fff;
+    width: 200px;
+    margin: 10px 0;
+}
+
+#projects button:hover,
+#contact button:hover {
+    background-color: #0056b3;
+}
+
+/* Cartões */
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-    gap: 4rem;  
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 30px;
 }
 
 .card {
-    margin: 20px 0;
+    background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    max-width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .card img {
     width: 100%;
     height: auto;
-    margin-bottom: 0px;
-    border-radius: 5px;
 }
 
 .card-body {
-    padding: 25px;
-}
-
-.card-text {
-    margin-bottom: 50px;
+    padding: 20px;
 }
 
 .card-title {
-    font-size: 20px;
-    margin-top: 0.20rem;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-text {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #666;
 }
 
 .card .btn {
-    padding: 12px 25px;
-    margin-top: 20px;
-    margin-bottom: 5px; /*Diminui o espaçamento abaixo do botão */
-    border: none;
     background-color: #007bff;
     color: #fff;
-    cursor: pointer;
-    border-radius: 5px;
+    padding: 10px 20px;
     font-size: 16px;
-    transition: background-color 0.3s ease;
     text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .card .btn:hover {
     background-color: #0056b3;
 }
 
+/* Seção de contato */
 #contact .conteudo {
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    width: fit-content;
+    width: 100%;
+    max-width: 400px;
     margin: 0 auto;
 }
 
-#contact button {
-    padding: 10px 20px;
-    margin: 5px;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    width: 150px;
+/* Seção sobre mim */
+#about .conteudo {
     text-align: center;
-    text-decoration: none;
 }
 
-#contact button:hover {
+/* Espaçamento entre os parágrafos de 'About me' */
+#about .conteudo p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+/* Ajustes no layout da imagem de perfil */
+#home .profile-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#home .profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Alinhamento do texto e imagem de perfil */
+#home .conteudo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+#home .conteudo h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+#home .conteudo p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Estilo dos botões de contato */
+#home .social-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#home .social-buttons a {
+    background-color: #007bff;
+    padding: 12px;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#home .social-buttons a:hover {
     background-color: #0056b3;
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    header,
+    footer {
+        padding: 20px 0;
+    }
+
+    .secao {
+        padding: 30px 15px;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    button,
+    .btn {
+        width: 100%;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    #home .conteudo h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .secao h2 {
+        font-size: 1.5rem;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    #home .conteudo p {
+        font-size: 1rem;
+    }
 }
