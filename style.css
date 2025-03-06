@@ -14,12 +14,28 @@ body {
 }
 
 /* Header e Footer */
-header,
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+main {
+    padding-top: 60px; /* Ajuste para a altura do seu cabeçalho */
+}
+
 footer {
     background-color: #333;
     color: #fff;
     padding: 20px 0;
     text-align: center;
+    font-size: 14px;
 }
 
 footer {
@@ -61,15 +77,6 @@ nav ul li a:hover {
 .secao h2 {
     margin-bottom: 20px;
     font-size: 2rem;
-}
-
-/* Estilo para a estrelinha entre a imagem de perfil e o título "About me" */
-.estrelinha {
-    font-size: 3rem;
-    color: #007bff;
-    margin: 20px 0;
-    text-align: center;
-    display: inline-block;
 }
 
 /* Botões */
@@ -166,7 +173,7 @@ button:hover,
 
 /* Seção sobre mim */
 #about .conteudo {
-    text-align: center;
+    text-align: left; /* Alinha o texto à esquerda na seção "About Me" */
 }
 
 /* Espaçamento entre os parágrafos de 'About me' */
@@ -193,11 +200,9 @@ button:hover,
 /* Alinhamento do texto e imagem de perfil */
 #home .conteudo {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    text-align: center;
+    flex-direction: column; /* Isso garante que os elementos fiquem um abaixo do outro */
+    align-items: center; /* Centraliza os elementos horizontalmente */
+    text-align: center; /* Centraliza o texto dentro dos elementos */
 }
 
 #home .conteudo h1 {
@@ -283,4 +288,36 @@ button:hover,
     #home .conteudo p {
         font-size: 1rem;
     }
+}
+
+/* Seção sobre mim - Layout de colunas */
+.about-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas de igual largura */
+    gap: 20px;
+}
+
+.about-column {
+    text-align: left; /* Alinha o texto à esquerda nas colunas */
+}
+
+.about-item {
+    margin-bottom: 20px;
+}
+
+.about-item h4 {
+    margin-bottom: 5px;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.skill {
+    background-color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
 }
