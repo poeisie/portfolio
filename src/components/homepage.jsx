@@ -28,7 +28,7 @@ const HomePage = () => {
           {/* Título Principal */}
           <h1
             style={{
-              fontSize: "4.5rem",
+              fontSize: "8rem",
               fontWeight: "bold",
               color: "#1a1a1a",
               marginBottom: "30px",
