@@ -1,0 +1,180 @@
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Importar fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,300&display=swap');
+
+:root {
+    --bg-color: #ffffff;
+    --sidebar-bg: #ffffff;
+    --sidebar-width: 240px;
+    --text-color: #1a1a1a;
+    --link-color: #888;
+    --link-hover: #0000FF;
+    --border-color: #e0e0e0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--link-hover);
+}
+
+/* ---------------------------------------------------- */
+/* LAYOUT PRINCIPAL (Sidebar Fixa + Conteúdo Scrollável) */
+/* ---------------------------------------------------- */
+.main-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Fixa */
+.sidebar {
+    width: var(--sidebar-width);
+    position: fixed;
+    height: 100vh;
+    background-color: var(--sidebar-bg);
+    padding: 60px 50px;
+    border-right: 0px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 100;
+    left: 0;
+    top: 0;
+}
+
+.sidebar-content {
+    flex: 1;
+}
+
+.sidebar .logo {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+}
+
+.sidebar .tagline {
+    font-size: 0.78rem;
+    color: #000000;
+    margin-bottom: 30px;
+    font-family: Arial, sans-serif;
+    letter-spacing: 1px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.sidebar nav ul li {
+    margin: 0px 0;
+}
+
+.sidebar nav ul li a {
+    font-size: 0.75rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--link-color);
+    text-transform: lowercase;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.sidebar nav ul li a::before {
+    content: '';
+    margin-right: 0;
+}
+
+.sidebar nav ul li a:hover {
+    color: var(--link-hover);
+    transform: none;
+}
+
+.sidebar nav ul li a.active {
+    color: var(--link-hover);
+}
+
+.sidebar .footer-copy {
+    font-size: 0.9rem;
+    color: #000000;
+    line-height: 1.5;
+    padding-top: 20px;
+    border-top: 0px solid var(--border-color);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+
+.sidebar .footer-copy::first-line {
+    font-family: Arial, sans-serif;
+}
+
+/* Conteúdo Principal (Scrollável) */
+.content-area {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    min-height: 100vh;
+    background-color: var(--bg-color);
+}
+
+h2 {
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: var(--text-color);
+}
+
+/* ---------------------------------------------------- */
+/* RESPONSIVO */
+/* ---------------------------------------------------- */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 30px 20px;
+    }
+
+    .content-area {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .main-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar .logo {
+        font-size: 1rem;
+    }
+
+    .sidebar nav ul li a {
+        font-size: 0.85rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
