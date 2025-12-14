@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import muralColetivoImg from '../assets/1.jpg'; 
+import coletivoSemearteImg from '../assets/semearte.jpg';
+import oficinaEscolinhaImg from '../assets/12.jpg';
 
 // Componente para cada tile de arte
 const ArtTile = ({ imageSrc, title, description, onClick }) => {
@@ -216,19 +219,19 @@ const ProjectsArtGrid = () => {
 
   const artProjects = [
     { 
-      image: null,
+      image: muralColetivoImg,
       title: 'Mural Coletivo',
       description: 'Projeto de arte urbana colaborativa que transforma espaços públicos através da criatividade coletiva.',
       fullContent: 'Aqui você pode adicionar muito mais conteúdo sobre o Mural Coletivo, incluindo detalhes do processo, participantes, localização, datas, fotos adicionais, etc.'
     },
     { 
-      image: null,
+      image: coletivoSemearteImg,
       title: 'Coletivo Semearte',
       description: 'Iniciativa cultural que promove arte e educação através de ações comunitárias e workshops criativos.',
       fullContent: 'Detalhes expandidos sobre o Coletivo Semearte, sua missão, projetos realizados, impacto na comunidade, etc.'
     },
     { 
-      image: null,
+      image: oficinaEscolinhaImg,
       title: 'Oficina Escolinha',
       description: 'Programa educacional voltado para o desenvolvimento artístico e criativo de crianças e adolescentes.',
       fullContent: 'Informações completas sobre a Oficina Escolinha, metodologia, atividades desenvolvidas, resultados alcançados, etc.'
