@@ -13,7 +13,6 @@ const HomePage = () => {
         backgroundColor: "#ffffff",
       }}
     >
-      {" "}
       <div
         style={{
           maxWidth: "1600px",
@@ -24,9 +23,9 @@ const HomePage = () => {
           gap: "500px",
         }}
       >
-        {/* Conteúdo de texto */}{" "}
+        {/* Conteúdo de texto */}
         <div style={{ flex: "0 0 auto", minWidth: "400px", maxWidth: "800px" }}>
-          {/* Título Principal */}{" "}
+          {/* Título Principal */}
           <h1
             style={{
               fontSize: "4.5rem",
@@ -35,38 +34,39 @@ const HomePage = () => {
               marginBottom: "30px",
               lineHeight: "1.2",
               letterSpacing: "-2px",
-              fontFamily: "Jacquard 12, serif", // Fonte personalizada
+              fontFamily: '"Jacquard 12", serif',
             }}
           >
-            Caliel Feijó{" "}
+            Caliel Feijó
           </h1>
-          {/* Subtexto */}{" "}
+          
+          {/* Subtexto */}
           <div
             style={{
               fontSize: "1.2rem",
               color: "#666",
               lineHeight: "1.8",
-              fontFamily: "Jacquarda Bastarda 9, cursive", // Fonte personalizada
+              fontFamily: '"Jacquarda Bastarda 9", cursive',
               fontWeight: "300",
             }}
           >
-            {" "}
             <p style={{ marginBottom: "20px" }}>
-              Visual Artist and Fullstack Developer from Recife, PE.{" "}
-            </p>{" "}
-          </div>{" "}
+              Visual Artist and Fullstack Developer from Recife, PE.
+            </p>
+          </div>
         </div>
-        {/* Vídeo do Leopardo */}{" "}
+
+        {/* Vídeo do Leopardo */}
         <div
           style={{
-            flex: "0 0 1200px",
+            // Usei '1 1 auto' para flexibilidade no container de vídeo, pois 1200px é muito rígido
+            flex: "0 0 1100px", 
             minWidth: "800px",
             display: "flex",
             alignItems: "center",
             justifyContent: "flex-end",
           }}
         >
-          {" "}
           <video
             src={leopardoVideo}
             autoPlay
@@ -74,14 +74,14 @@ const HomePage = () => {
             muted
             playsInline
             style={{
-              width: "1500px",
+              width: "1500px", // Mantenho, mas recomendo usar % ou max-width para melhor layout
               height: "auto",
               display: "block",
               borderRadius: "0px",
             }}
-          />{" "}
-        </div>{" "}
-      </div>{" "}
+          />
+        </div>
+      </div>
     </div>
   );
 };
