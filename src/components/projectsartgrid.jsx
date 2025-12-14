@@ -125,7 +125,7 @@ const ExpandedModal = ({ project, onClose }) => {
       }}>
         <div style={{
           width: '100%',
-          minHeight: '100%', // Usar minHeight para garantir que o conteúdo preencha
+          minHeight: '100%', 
           backgroundColor: '#fff',
           position: 'relative',
           padding: '60px'
@@ -134,7 +134,7 @@ const ExpandedModal = ({ project, onClose }) => {
           <div style={{
             position: 'relative',
             zIndex: 2,
-            color: '#1a1a1a', // Texto principal escuro
+            color: '#1a1a1a', 
             
           }}>
             {/* Botão de Fechar */}
@@ -233,8 +233,28 @@ const ProjectsArtGrid = () => {
           <strong>Conceito da Arte:</strong>
           <br/>
           A arte desenvolvida para o mural tem como tema “Raízes e Espiritualidade”, propondo uma reflexão visual sobre o encontro entre crenças, culturas e memórias. O pássaro representa o sincretismo religioso, símbolo da liberdade e da convivência entre diferentes tradições de fé. A flor de lírio, associada ao Candomblé, surge acolhida pelo Cristianismo, expressando o respeito e a integração entre as matrizes afro-brasileiras e cristãs que coexistem no morro. Ao fundo, o símbolo da Sankofa, originário da cultura Akan, convida a olhar para as raízes ancestrais como forma de compreender o presente e construir o futuro. O mural, portanto, não é apenas uma pintura, mas uma celebração das identidades e espiritualidades que habitam o Morro da Conceição — um tributo à força de sua comunidade e à potência transformadora da arte como linguagem de diálogo.
-          <br/>Artistas envolvidos:<br/>
-Agatha Maria Silva de Oliveira, Alessandro José da Silva, Ana Júlia Ribeiro de Macedo, Caliel Feijó de Melo Silva, Cauã Teixeira Lima, Elbany Gomes dos Santos, Emanuelle Karla Basílio Ferreira Silva, Flávia Alessandra Almeida Araújo, Ilane Ribeiro Hirata, Isadora de Melo Polesi, Julie Kunii, Letícia Vitória Campos de Melo, Lírio Amarílis Matias, Lucas Ângelo Botelho, Maria Eduarda Malaquias Rodrigues, Maria Joana Pequeno Aureliano da Silva, Samuel Victor Guedes de Queiroz, Vinicius Diniz Nunes.<br/>
+          <br/><br/>
+          <strong>Artistas envolvidos:</strong>
+          <ul style={{ marginLeft: '20px', listStyleType: 'disc' }}>
+            <li>Agatha Maria Silva de Oliveira</li>
+            <li>Alessandro José da Silva</li>
+            <li>Ana Júlia Ribeiro de Macedo</li>
+            <li>Caliel Feijó de Melo Silva</li>
+            <li>Cauã Teixeira Lima</li>
+            <li>Elbany Gomes dos Santos</li>
+            <li>Emanuelle Karla Basílio Ferreira Silva</li>
+            <li>Flávia Alessandra Almeida Araújo</li>
+            <li>Ilane Ribeiro Hirata</li>
+            <li>Isadora de Melo Polesi</li>
+            <li>Julie Kunii</li>
+            <li>Letícia Vitória Campos de Melo</li>
+            <li>Lírio Amarílis Matias</li>
+            <li>Lucas Ângelo Botelho</li>
+            <li>Maria Eduarda Malaquias Rodrigues</li>
+            <li>Maria Joana Pequeno Aureliano da Silva</li>
+            <li>Samuel Victor Guedes de Queiroz</li>
+            <li>Vinicius Diniz Nunes</li>
+          </ul>
         </>
       )
     },
@@ -242,13 +262,21 @@ Agatha Maria Silva de Oliveira, Alessandro José da Silva, Ana Júlia Ribeiro de
       image: coletivoSemearteImg,
       title: 'Coletivo Semearte',
       description: 'Iniciativa cultural que promove arte e educação através de ações comunitárias e workshops criativos.',
-      fullContent: 'Detalhes expandidos sobre o Coletivo Semearte, sua missão, projetos realizados, impacto na comunidade, etc.'
+      fullContent: 'Detalhes expandidos sobre o Coletivo Semearte, sua missão, projetos realizados, impacto na comunidade, etc.' // Este texto ainda precisa ser atualizado
     },
     { 
       image: oficinaEscolinhaImg,
       title: 'Oficina Escolinha',
-      description: 'Programa educacional voltado para o desenvolvimento artístico e criativo de crianças e adolescentes.',
-      fullContent: 'Informações completas sobre a Oficina Escolinha, metodologia, atividades desenvolvidas, resultados alcançados, etc.'
+      description: 'Programa educacional voltado para o desenvolvimento artístico e criativo de crianças.',
+      fullContent: (
+        <>
+          <strong>Prática na Escolinha de Artes do Recife – 2025</strong>
+          <br/><br/>
+          A turma de Metodologia realizou uma atividade em parceria com a Escolinha de Arte do Recife, vivenciando práticas e metodologias do ensino não formal em Artes Visuais. Os alunos conheceram a proposta pedagógica e a importância histórica da instituição, e realizaram uma visita de reconhecimento do espaço.
+          <br/><br/>
+          Em seguida, os alunos dividiram-se em três grupos para planejar e desenvolver oficinas destinadas às crianças atendidas pela Escolinha. A experiência destacou a sensibilização, a livre expressão e a inclusão como fundamentos do processo educativo em arte.
+        </>
+      )
     }
   ];
 
