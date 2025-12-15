@@ -59,7 +59,6 @@ const HomePage = () => {
         {/* Vídeo do Leopardo */}
         <div
           style={{
-            // Usei '1 1 auto' para flexibilidade no container de vídeo, pois 1200px é muito rígido
             flex: "0 0 1100px", 
             minWidth: "800px",
             display: "flex",
@@ -74,7 +73,7 @@ const HomePage = () => {
             muted
             playsInline
             style={{
-              width: "1500px", // Mantenho, mas recomendo usar % ou max-width para melhor layout
+              width: "1500px",
               height: "auto",
               display: "block",
               borderRadius: "0px",

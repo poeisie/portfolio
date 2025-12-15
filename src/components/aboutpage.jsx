@@ -14,7 +14,6 @@ const AboutPage = () => {
         <header style={{
           marginBottom: '50px',
           paddingBottom: '30px',
-          borderBottom: '2px solid #e0e0e0',
           display: 'flex',
           gap: '60px',
           alignItems: 'flex-start'
@@ -42,47 +41,50 @@ const AboutPage = () => {
             </div>
           </div>
 
-          {/* Informações */}
+          {/* Informacoes */}
           <div style={{ flex: '1' }}>
             <h1 style={{
-              fontSize: '3rem',
+              fontSize: '4rem',
               color: '#1a1a1a',
               marginBottom: '15px',
               letterSpacing: '-1px',
-              fontFamily: 'Arial, sans-serif'
+              fontFamily: '"Jacquard 12", serif' 
             }}>Caliel Feijó</h1>
+            
             <h2 style={{
-              fontSize: '1.3rem',
+              fontSize: '0.9rem',
               color: '#666',
               marginBottom: '20px',
+              fontStyle: 'italic',
               fontFamily: 'Lato, sans-serif',
               fontWeight: '300'
-            }}>Educador de Arte & Desenvolvedor</h2>
+            }}>⚧ enby, they/them</h2>
+            
             <p style={{
               fontSize: '1rem',
               color: '#666',
               lineHeight: '1.8',
               fontFamily: 'Lato, sans-serif',
-              fontWeight: '300'
+              fontWeight: '300',
+              textTransform: 'lowercase',
             }}>
-              Educador cultural e artista com experiência em promover e desenvolver atividades culturais em instituições educacionais e comunidades. Apaixonado por oferecer acesso à arte, cultura e educação através de workshops, eventos e iniciativas que enriquecem vidas e promovem inclusão social através da criatividade.
-            </p>
+              Fullstack Developer in Training with experience in interdisciplinary projects implementing creative educational programs in institutional and community environments. Skilled in design tools as well as web technologies including Node.js, React, Angular, and TypeScript. Currently focused on front-end development and C programming.
+          </p>
           </div>
         </header>
 
         <div style={{ maxWidth: '900px' }}>
-          {/* EXPERIÊNCIA */}
+          {/* EXPERIENCIA */}
           <section style={{ marginBottom: '50px' }}>
             <h3 style={{
-              fontSize: '1.8rem',
+              fontSize: '1.2rem',
               color: '#1a1a1a',
               marginBottom: '25px',
               paddingBottom: '10px',
               borderBottom: '1px solid #e0e0e0',
-              textTransform: 'uppercase',
               letterSpacing: '1px',
-              fontFamily: 'Arial, sans-serif'
-            }}>Experiência</h3>
+              fontFamily: '"Jacquarda Bastarda 9", cursive'
+            }}>Experience</h3>
             
             <div style={{
               marginBottom: '30px',
@@ -94,15 +96,17 @@ const AboutPage = () => {
                 color: '#1a1a1a',
                 marginBottom: '5px',
                 fontWeight: 'bold',
-                fontFamily: 'Arial, sans-serif'
-              }}>Estagiário Cultural & Educador de Arte</div>
+                letterSpacing: '3px',
+                textTransform: 'uppercase',
+                fontFamily: 'Arial, serif'
+              }}>cultural intern & art educator</div>
               <div style={{
                 fontSize: '1rem',
                 color: '#666',
                 marginBottom: '5px',
                 fontFamily: 'Lato, sans-serif',
                 fontWeight: '300'
-              }}>Prefeitura do Recife</div>
+              }}>prefeitura do recife</div>
               <div style={{
                 fontSize: '0.9rem',
                 color: '#999',
@@ -110,16 +114,17 @@ const AboutPage = () => {
                 fontStyle: 'italic',
                 fontFamily: 'Lato, sans-serif',
                 fontWeight: '300'
-              }}>Presente</div>
+              }}>may 2025 - present</div>
               <p style={{
                 fontSize: '0.95rem',
                 color: '#666',
                 lineHeight: '1.6',
                 fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
+                fontWeight: '300',
+                textTransform: 'lowercase',
               }}>
-                Promoção e desenvolvimento de atividades culturais em instituições educacionais e comunidades. Oferecimento de acesso à arte, cultura e educação através de workshops, eventos, exposições e outras iniciativas que enriquecem as vidas dos participantes e da comunidade. Fomento à criatividade, aprendizado e inclusão social através da cultura.
-              </p>
+                Responsible for promoting and developing cultural activities in educational institutions and local communities. Provide access to art, culture, and education through workshops, events, exhibitions, and other initiatives that enrich the lives of participants and the community. Foster creativity, learning, and social inclusion through cultural engagement.
+            </p>
             </div>
 
             <div style={{
@@ -132,8 +137,10 @@ const AboutPage = () => {
                 color: '#1a1a1a',
                 marginBottom: '5px',
                 fontWeight: 'bold',
-                fontFamily: 'Arial, sans-serif'
-              }}>Pesquisador e Educador de Museu</div>
+                letterSpacing: '3px',
+                textTransform: 'uppercase',
+                fontFamily: 'Arial, serif'
+              }}>Museum Researcher and Educator</div>
               <div style={{
                 fontSize: '1rem',
                 color: '#666',
@@ -141,6 +148,14 @@ const AboutPage = () => {
                 fontFamily: 'Lato, sans-serif',
                 fontWeight: '300'
               }}>Museu Espaço Ciência PE</div>
+              <div style={{
+                fontSize: '0.9rem',
+                color: '#999',
+                marginBottom: '10px',
+                fontStyle: 'italic',
+                fontFamily: 'Lato, sans-serif',
+                fontWeight: '300'
+              }}>Feb 2025</div>
               <p style={{
                 fontSize: '0.95rem',
                 color: '#666',
@@ -149,7 +164,7 @@ const AboutPage = () => {
                 fontWeight: '300',
                 marginTop: '10px'
               }}>
-                Comunicação, pesquisa e oficinas educacionais.
+                Responsible for communication, research, and educational workshops. Provided guided tours for diverse audiences, fostering interest in science and technology. Conducted research to improve the museum's guided tours and educational content, contributing to the institution's mission of promoting scientific knowledge.
               </p>
             </div>
 
@@ -163,8 +178,10 @@ const AboutPage = () => {
                 color: '#1a1a1a',
                 marginBottom: '5px',
                 fontWeight: 'bold',
-                fontFamily: 'Arial, sans-serif'
-              }}>Estágio</div>
+                letterSpacing: '3px',
+                textTransform: 'uppercase',
+                fontFamily: 'Arial, serif'
+              }}>Internship</div>
               <div style={{
                 fontSize: '1rem',
                 color: '#666',
@@ -172,6 +189,14 @@ const AboutPage = () => {
                 fontFamily: 'Lato, sans-serif',
                 fontWeight: '300'
               }}>Smart SSMA Consulting</div>
+              <div style={{
+                fontSize: '0.9rem',
+                color: '#999',
+                marginBottom: '10px',
+                fontStyle: 'italic',
+                fontFamily: 'Lato, sans-serif',
+                fontWeight: '300'
+              }}>April 2022 - July 2022</div>
               <p style={{
                 fontSize: '0.95rem',
                 color: '#666',
@@ -180,12 +205,12 @@ const AboutPage = () => {
                 fontWeight: '300',
                 marginTop: '10px'
               }}>
-                Estudo de legislação aplicada ao ensino a distância, participação no curso de formação de criadores de conteúdo para cursos virtuais, estudo de normas técnicas e outras publicações relacionadas a cursos de segurança ocupacional, alimentação do ambiente virtual de aprendizagem com o conteúdo elaborado, atividades administrativas e suporte administrativo.
-              </p>
+                Conducted research on legislation related to distance education; participated in a training course for virtual course content creators; studied technical standards and other publications related to occupational safety courses; managed and updated the virtual learning environment with developed content; performed administrative tasks and provided administrative support.
+            </p>
             </div>
           </section>
 
-          {/* EDUCAÇÃO */}
+          {/* EDUCACAO */}
           <section style={{ marginBottom: '50px' }}>
             <h3 style={{
               fontSize: '1.8rem',
@@ -196,7 +221,7 @@ const AboutPage = () => {
               textTransform: 'uppercase',
               letterSpacing: '1px',
               fontFamily: 'Arial, sans-serif'
-            }}>Educação</h3>
+            }}>Educacao</h3>
             
             <div style={{
               marginBottom: '30px',
@@ -238,7 +263,7 @@ const AboutPage = () => {
                 marginBottom: '5px',
                 fontWeight: 'bold',
                 fontFamily: 'Arial, sans-serif'
-              }}>Tecnólogo em Análise e Desenvolvimento de Sistemas</div>
+              }}>Tecnologo em Analise e Desenvolvimento de Sistemas</div>
               <div style={{
                 fontSize: '1rem',
                 color: '#666',
@@ -267,7 +292,7 @@ const AboutPage = () => {
                 marginBottom: '5px',
                 fontWeight: 'bold',
                 fontFamily: 'Arial, sans-serif'
-              }}>Técnico em Segurança do Trabalho</div>
+              }}>Tecnico em Seguranca do Trabalho</div>
               <div style={{
                 fontSize: '1rem',
                 color: '#666',
@@ -420,7 +445,7 @@ const AboutPage = () => {
                 fontWeight: '300'
               }}>
                 <span style={{ color: '#1a1a1a' }}>►</span>
-                <a href="https://github.com/calielfeijo" target="_blank" rel="noopener noreferrer" style={{
+                <a href="https://github.com/poeisie" target="_blank" rel="noopener noreferrer" style={{
                   color: '#666',
                   textDecoration: 'none',
                   transition: 'color 0.3s ease'
@@ -436,11 +461,43 @@ const AboutPage = () => {
                 fontWeight: '300'
               }}>
                 <span style={{ color: '#1a1a1a' }}>►</span>
-                <a href="https://linkedin.com/in/calielfeijo" target="_blank" rel="noopener noreferrer" style={{
+                <a href="https://www.linkedin.com/in/calielfeijo/" target="_blank" rel="noopener noreferrer" style={{
                   color: '#666',
                   textDecoration: 'none',
                   transition: 'color 0.3s ease'
                 }}>LinkedIn</a>
+              </div>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                color: '#666',
+                fontSize: '0.95rem',
+                fontFamily: 'Lato, sans-serif',
+                fontWeight: '300'
+              }}>
+                <span style={{ color: '#1a1a1a' }}>►</span>
+                <a href="mailto:calielfeijo@gmail.com" style={{
+                  color: '#666',
+                  textDecoration: 'none',
+                  transition: 'color 0.3s ease'
+                }}>calielfeijo@gmail.com</a>
+              </div>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                color: '#666',
+                fontSize: '0.95rem',
+                fontFamily: 'Lato, sans-serif',
+                fontWeight: '300'
+              }}>
+                <span style={{ color: '#1a1a1a' }}>►</span>
+                <a href="tel:+5581981654408" style={{
+                  color: '#666',
+                  textDecoration: 'none',
+                  transition: 'color 0.3s ease'
+                }}>+55 (81) 98165-4408</a>
               </div>
             </div>
           </section>
