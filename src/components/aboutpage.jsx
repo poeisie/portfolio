@@ -77,7 +77,7 @@ const AboutPage = () => {
           {/* EXPERIENCIA */}
           <section style={{ marginBottom: '50px' }}>
             <h3 style={{
-              fontSize: '1.2rem',
+              fontSize: '2rem',
               color: '#1a1a1a',
               marginBottom: '25px',
               paddingBottom: '10px',
@@ -105,7 +105,8 @@ const AboutPage = () => {
                 color: '#666',
                 marginBottom: '5px',
                 fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
+                fontWeight: '300',
+                fontStyle: 'italic',
               }}>prefeitura do recife</div>
               <div style={{
                 fontSize: '0.9rem',
@@ -146,8 +147,9 @@ const AboutPage = () => {
                 color: '#666',
                 marginBottom: '5px',
                 fontFamily: 'Lato, sans-serif',
+                fontStyle: 'italic',
                 fontWeight: '300'
-              }}>Museu Espaço Ciência PE</div>
+              }}>museu espaço ciência PE</div>
               <div style={{
                 fontSize: '0.9rem',
                 color: '#999',
@@ -155,14 +157,15 @@ const AboutPage = () => {
                 fontStyle: 'italic',
                 fontFamily: 'Lato, sans-serif',
                 fontWeight: '300'
-              }}>Feb 2025</div>
+              }}>feb 2025</div>
               <p style={{
                 fontSize: '0.95rem',
                 color: '#666',
                 lineHeight: '1.6',
                 fontFamily: 'Lato, sans-serif',
                 fontWeight: '300',
-                marginTop: '10px'
+                marginTop: '10px',
+                textTransform: 'lowercase',
               }}>
                 Responsible for communication, research, and educational workshops. Provided guided tours for diverse audiences, fostering interest in science and technology. Conducted research to improve the museum's guided tours and educational content, contributing to the institution's mission of promoting scientific knowledge.
               </p>
@@ -187,8 +190,9 @@ const AboutPage = () => {
                 color: '#666',
                 marginBottom: '5px',
                 fontFamily: 'Lato, sans-serif',
+                fontStyle: 'italic',
                 fontWeight: '300'
-              }}>Smart SSMA Consulting</div>
+              }}>smart SSMA consulting</div>
               <div style={{
                 fontSize: '0.9rem',
                 color: '#999',
@@ -196,14 +200,15 @@ const AboutPage = () => {
                 fontStyle: 'italic',
                 fontFamily: 'Lato, sans-serif',
                 fontWeight: '300'
-              }}>April 2022 - July 2022</div>
+              }}>april 2022 - july 2022</div>
               <p style={{
                 fontSize: '0.95rem',
                 color: '#666',
                 lineHeight: '1.6',
                 fontFamily: 'Lato, sans-serif',
                 fontWeight: '300',
-                marginTop: '10px'
+                marginTop: '10px',
+                textTransform: 'lowercase',
               }}>
                 Conducted research on legislation related to distance education; participated in a training course for virtual course content creators; studied technical standards and other publications related to occupational safety courses; managed and updated the virtual learning environment with developed content; performed administrative tasks and provided administrative support.
             </p>
@@ -213,15 +218,14 @@ const AboutPage = () => {
           {/* EDUCACAO */}
           <section style={{ marginBottom: '50px' }}>
             <h3 style={{
-              fontSize: '1.8rem',
+              fontSize: '2rem',
               color: '#1a1a1a',
               marginBottom: '25px',
               paddingBottom: '10px',
               borderBottom: '1px solid #e0e0e0',
-              textTransform: 'uppercase',
               letterSpacing: '1px',
-              fontFamily: 'Arial, sans-serif'
-            }}>Educacao</h3>
+              fontFamily: '"Jacquarda Bastarda 9", cursive'
+            }}>Education</h3>
             
             <div style={{
               marginBottom: '30px',
