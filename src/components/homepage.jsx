@@ -1,87 +1,42 @@
 import React from "react";
 import leopardoVideo from "../assets/leopardo2.webm";
+import { useT } from "../prefs.jsx";
 
 const HomePage = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100vh",
-        padding: "60px",
-        backgroundColor: "#ffffff",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1600px",
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: "500px",
-        }}
-      >
-        {/* Conteúdo de texto */}
-        <div style={{ flex: "0 0 auto", minWidth: "400px", maxWidth: "800px" }}>
-          {/* Título Principal */}
-          <h1
-            style={{
-              fontSize: "8rem",
-              fontWeight: "bold",
-              color: "#1a1a1a",
-              marginBottom: "30px",
-              lineHeight: "1.2",
-              letterSpacing: "-2px",
-              fontFamily: '"Jacquard 12", serif',
-            }}
-          >
-            Caliel Feijó
-          </h1>
-          
-          {/* Subtexto */}
-          <div
-            style={{
-              fontSize: "1.2rem",
-              color: "#666",
-              lineHeight: "1.8",
-              fontFamily: '"Jacquarda Bastarda 9", cursive',
-              fontWeight: "300",
-            }}
-          >
-            <p style={{ marginBottom: "20px" }}>
-              Visual Artist and Fullstack Developer from Recife, PE.
-            </p>
-          </div>
-        </div>
+  const t = useT();
 
-        {/* Vídeo do Leopardo */}
-        <div
-          style={{
-            flex: "0 0 1100px", 
-            minWidth: "800px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-end",
-          }}
-        >
-          <video
-            src={leopardoVideo}
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{
-              width: "1500px",
-              height: "auto",
-              display: "block",
-              borderRadius: "0px",
-            }}
-          />
+  return (
+    <section className="home">
+      <div>
+        <h1 className="home-title">Caliel Feijó</h1>
+        <p className="home-sub">
+          {t({
+            pt: "Artista visual e dev fullstack de Recife, PE.",
+            en: "Visual artist and fullstack developer from Recife, PE.",
+          })}
+        </p>
+        <p className="home-hello">
+          {t({
+            pt: "Oi! Eu desenho, programo e ensino arte. Fica à vontade pra explorar.",
+            en: "Hi! I draw, code and teach art. Make yourself at home.",
+          })}
+        </p>
+        <div className="home-links">
+          <a href="#arts" className="arrow-link">{t({ pt: "artes →", en: "arts →" })}</a>
+          <a href="#dev" className="arrow-link">dev_ →</a>
+          <a href="#contact" className="arrow-link">{t({ pt: "contato →", en: "contact →" })}</a>
         </div>
       </div>
-    </div>
+
+      <video
+        className="home-video"
+        src={leopardoVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+    </section>
   );
 };
 

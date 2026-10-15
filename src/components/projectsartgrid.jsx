@@ -1,318 +1,220 @@
-import React, { useState } from 'react';
-import muralColetivoImg from '../assets/1.jpg'; 
+import React, { useEffect, useState } from 'react';
+import muralColetivoImg from '../assets/1.jpg';
 import coletivoSemearteImg from '../assets/semearte.jpg';
 import oficinaEscolinhaImg from '../assets/12.jpg';
+import adrastiaImg from '../assets/digital/adrastia.jpg';
+import calielEsbocoImg from '../assets/digital/caliel-esboco.jpg';
+import { useT } from '../prefs.jsx';
+
+const muralArtists = [
+  'Agatha Maria Silva de Oliveira',
+  'Alessandro José da Silva',
+  'Ana Júlia Ribeiro de Macedo',
+  'Caliel Feijó de Melo Silva',
+  'Cauã Teixeira Lima',
+  'Elbany Gomes dos Santos',
+  'Emanuelle Karla Basílio Ferreira Silva',
+  'Flávia Alessandra Almeida Araújo',
+  'Ilane Ribeiro Hirata',
+  'Isadora de Melo Polesi',
+  'Julie Kunii',
+  'Letícia Vitória Campos de Melo',
+  'Lírio Amarílis Matias',
+  'Lucas Ângelo Botelho',
+  'Maria Eduarda Malaquias Rodrigues',
+  'Maria Joana Pequeno Aureliano da Silva',
+  'Samuel Victor Guedes de Queiroz',
+  'Vinicius Diniz Nunes',
+];
+
+const ArtistList = () => (
+  <ul>
+    {muralArtists.map((name) => <li key={name}>{name}</li>)}
+  </ul>
+);
+
+const artProjects = [
+  {
+    image: adrastiaImg,
+    title: 'Adrastia',
+    description: {
+      pt: 'Ícone de personagem em arte digital, que fiz para o meu perfil de artes @p_tlmaea.',
+      en: 'A digital character icon I made for my art profile @p_tlmaea.',
+    },
+    fullContent: {
+      pt: 'Ilustração digital em preto e branco, com traço limpo e acabamento de sticker.',
+      en: 'Black-and-white digital illustration with clean lines and a sticker finish.',
+    },
+  },
+  {
+    image: calielEsbocoImg,
+    title: 'Caliel',
+    description: {
+      pt: 'Esboço com o meu nome em lettering gótico.',
+      en: 'A sketch with my name in gothic lettering.',
+    },
+    fullContent: {
+      pt: 'Estudo de figura e tipografia em grafite sobre fundo vermelho.',
+      en: 'Figure and type study in graphite on a red background.',
+    },
+  },
+  {
+    image: muralColetivoImg,
+    title: { pt: 'Mural Coletivo', en: 'Collective Mural' },
+    description: {
+      pt: 'Leitura da Cidade e Criação de Mural no Morro da Conceição',
+      en: 'Reading the City and Creating a Mural at Morro da Conceição',
+    },
+    fullContent: {
+      pt: (
+        <>
+          <strong>A atividade Leitura da Cidade e Criação de Mural no Morro da Conceição foi uma experiência com os alunos da disciplina de Metodologia 3, no segundo semestre do ano de 2025, que uniu arte, território e memória.</strong> A proposta consistiu em uma vivência de leitura da cidade a partir da observação e da escuta sensível do Morro da Conceição, um espaço simbólico na cidade de Recife.
+          <br/><br/>
+          A primeira etapa aconteceu com uma caminhada pela escadaria do morro, conduzida pelo artista plástico e guia de turismo Fernando Lopes, que tem desenvolvido intervenções artísticas ligadas à história da comunidade. Durante o percurso, os estudantes foram convidados a perceber as cores, formas, sons e narrativas do lugar — elementos que revelam o diálogo entre fé, resistência e ancestralidade presentes no cotidiano dos moradores.
+          <br/><br/>
+          A partir dessa imersão, foi proposto um exercício criativo no qual os estudantes desenvolveram projetos de murais inspirados na paisagem e na vivência local. Em grupos, apresentaram suas propostas à comunidade, que participou ativamente do processo, escolhendo a imagem que mais representava o sentimento e a identidade do Morro da Conceição. Com base nessa escolha, foi realizada uma oficina coletiva para a execução do mural, transformando a arte em um gesto de diálogo e pertencimento. A pintura agora integra a paisagem do bairro e fará parte do projeto de Fernando Lopes “Turismo Recife no Morro”, que valoriza o patrimônio material e imaterial da região.
+          <br/><br/>
+          <strong>Conceito da Arte:</strong>
+          <br/>
+          A arte desenvolvida para o mural tem como tema “Raízes e Espiritualidade”, propondo uma reflexão visual sobre o encontro entre crenças, culturas e memórias. O pássaro representa o sincretismo religioso, símbolo da liberdade e da convivência entre diferentes tradições de fé. A flor de lírio, associada ao Candomblé, surge acolhida pelo Cristianismo, expressando o respeito e a integração entre as matrizes afro-brasileiras e cristãs que coexistem no morro. Ao fundo, o símbolo da Sankofa, originário da cultura Akan, convida a olhar para as raízes ancestrais como forma de compreender o presente e construir o futuro. O mural, portanto, não é apenas uma pintura, mas uma celebração das identidades e espiritualidades que habitam o Morro da Conceição — um tributo à força de sua comunidade e à potência transformadora da arte como linguagem de diálogo.
+          <br/><br/>
+          <strong>Artistas envolvidos:</strong>
+          <ArtistList />
+        </>
+      ),
+      en: (
+        <>
+          <strong>Reading the City and Creating a Mural at Morro da Conceição was an experience with the students of the Methodology 3 course, in the second semester of 2025, bringing together art, territory and memory.</strong> The idea was to read the city through observation and attentive listening at Morro da Conceição, a symbolic place in Recife.
+          <br/><br/>
+          The first step was a walk up the hill's staircase, led by visual artist and tour guide Fernando Lopes, who has been creating art interventions tied to the community's history. Along the way, the students were invited to notice the colors, shapes, sounds and stories of the place — elements that reveal the dialogue between faith, resistance and ancestry in the residents' everyday life.
+          <br/><br/>
+          From this immersion came a creative exercise: the students designed mural proposals inspired by the local landscape and way of life. In groups, they presented their ideas to the community, which took an active part in the process and chose the image that best represented the feeling and identity of Morro da Conceição. Based on that choice, a collective workshop brought the mural to life, turning art into a gesture of dialogue and belonging. The painting is now part of the neighborhood's landscape and will be included in Fernando Lopes' project “Turismo Recife no Morro”, which celebrates the region's tangible and intangible heritage.
+          <br/><br/>
+          <strong>The concept:</strong>
+          <br/>
+          The mural's theme is “Roots and Spirituality”, a visual reflection on the meeting of beliefs, cultures and memories. The bird represents religious syncretism, a symbol of freedom and of different faith traditions living side by side. The lily, associated with Candomblé, is embraced by Christianity, expressing respect and integration between the Afro-Brazilian and Christian traditions that coexist on the hill. In the background, the Sankofa symbol, from Akan culture, invites us to look back at our ancestral roots to understand the present and build the future. So the mural is more than a painting: it celebrates the identities and spiritualities of Morro da Conceição — a tribute to the strength of its community and to the transformative power of art as a language of dialogue.
+          <br/><br/>
+          <strong>Artists involved:</strong>
+          <ArtistList />
+        </>
+      ),
+    },
+  },
+  {
+    image: coletivoSemearteImg,
+    title: { pt: 'Coletivo Semearte', en: 'Semearte Collective' },
+    description: {
+      pt: 'Iniciativa cultural que promove arte e educação com ações comunitárias e oficinas criativas.',
+      en: 'A cultural initiative promoting art and education through community actions and creative workshops.',
+    },
+  },
+  {
+    image: oficinaEscolinhaImg,
+    title: { pt: 'Oficina Escolinha', en: 'Escolinha Workshop' },
+    description: {
+      pt: 'Oficinas de arte pensadas para estimular a criatividade das crianças.',
+      en: 'Art workshops designed to spark children’s creativity.',
+    },
+    fullContent: {
+      pt: (
+        <>
+          <strong>Prática na Escolinha de Arte do Recife – 2025</strong>
+          <br/><br/>
+          A turma de Metodologia realizou uma atividade em parceria com a Escolinha de Arte do Recife, vivenciando práticas e metodologias do ensino não formal em Artes Visuais. Os alunos conheceram a proposta pedagógica e a importância histórica da instituição, e realizaram uma visita de reconhecimento do espaço.
+          <br/><br/>
+          Em seguida, os alunos dividiram-se em três grupos para planejar e desenvolver oficinas destinadas às crianças atendidas pela Escolinha. A experiência destacou a sensibilização, a livre expressão e a inclusão como fundamentos do processo educativo em arte.
+        </>
+      ),
+      en: (
+        <>
+          <strong>Practice at Escolinha de Arte do Recife – 2025</strong>
+          <br/><br/>
+          Our Methodology class partnered with Escolinha de Arte do Recife to experience non-formal teaching practices and methods in Visual Arts. We learned about the school's teaching approach and its historical importance, and visited the space to get to know it.
+          <br/><br/>
+          Then we split into three groups to plan and run workshops for the children who attend the Escolinha. The experience highlighted sensitivity, free expression and inclusion as the foundations of art education.
+        </>
+      ),
+    },
+  },
+];
 
 // Componente para cada tile de arte
-const ArtTile = ({ imageSrc, title, description, onClick }) => {
-  return (
-    <div 
-      onClick={onClick}
-      style={{
-        overflow: 'hidden',
-        cursor: 'pointer',
-        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-        borderRadius: '0px',
-        position: 'relative',
-        aspectRatio: '1 / 1',
-        backgroundColor: '#f5f5f5'
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-8px)';
-        e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
-        const overlay = e.currentTarget.querySelector('.art-overlay');
-        if (overlay) overlay.style.opacity = '1';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
-        const overlay = e.currentTarget.querySelector('.art-overlay');
-        if (overlay) overlay.style.opacity = '0';
-      }}>
-      <div style={{
-        width: '100%',
-        height: '100%',
-        backgroundImage: imageSrc ? `url(${imageSrc})` : 'none',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundColor: '#e0e0e0',
-        position: 'relative'
-      }}>
-        {!imageSrc && (
-          <div style={{
-            width: '100%',
-            height: '100%',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            opacity: 0.3
-          }}></div>
-        )}
-        
-        {/* Overlay com informações */}
-        <div className="art-overlay" style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 100%)',
-          display: 'flex',
-          alignItems: 'flex-end',
-          padding: '30px',
-          opacity: 0,
-          transition: 'opacity 0.3s ease'
-        }}>
-          <div style={{ width: '100%' }}>
-            {title && (
-              <h3 style={{
-                fontSize: '1.8rem',
-                color: '#fff',
-                marginBottom: '10px',
-                fontWeight: 'bold',
-                fontFamily: 'Arial, sans-serif'
-              }}>{title}</h3>
-            )}
-            {description && (
-              <p style={{
-                fontSize: '1rem',
-                color: '#e0e0e0',
-                lineHeight: '1.5',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>{description}</p>
-            )}
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  );
-};
+const ArtTile = ({ imageSrc, title, description, onClick }) => (
+  <button type="button" className="art-tile" onClick={onClick}>
+    <img src={imageSrc} alt={title} loading="lazy" />
+    <div className="art-tile-info">
+      <p className="art-tile-title">{title}</p>
+      {description && <p className="art-tile-desc">{description}</p>}
+    </div>
+  </button>
+);
 
 // Modal expandido
 const ExpandedModal = ({ project, onClose }) => {
-  if (!project) return null;
+  const t = useT();
 
-  return (
-    <>
-      {/* Background escuro */}
-      <div 
-        onClick={onClose}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0,0,0,0.8)',
-          zIndex: 999,
-          animation: 'fadeIn 0.3s ease'
-        }}
-      />
-      
-      {/* Modal de conteúdo */}
-      <div style={{
-        position: 'fixed',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '70vw',
-        maxWidth: '1000px',
-        height: '80vh',
-        backgroundColor: '#fff',
-        zIndex: 1000,
-        overflow: 'auto',
-        animation: 'slideUp 0.3s ease'
-      }}>
-        <div style={{
-          width: '100%',
-          minHeight: '100%', 
-          backgroundColor: '#fff',
-          position: 'relative',
-          padding: '60px'
-        }}>
-          
-          <div style={{
-            position: 'relative',
-            zIndex: 2,
-            color: '#1a1a1a', 
-            
-          }}>
-            {/* Botão de Fechar */}
-            <button 
-              onClick={onClose}
-              style={{
-                position: 'absolute',
-                top: '0px',
-                right: '0px',
-                background: 'transparent',
-                color: '#1a1a1a',
-                border: 'none',
-                padding: '15px 20px',
-                fontSize: '1.5rem',
-                cursor: 'pointer',
-                fontWeight: 'bold'
-              }}>
-              ✕
-            </button>
-            
-            {/* Imagem Principal do Projeto no Modal */}
-            <div style={{ width: '100%', height: 'auto', marginBottom: '40px' }}>
-              <img 
-                src={project.image} 
-                alt={project.title} 
-                style={{ width: '100%', height: 'auto', display: 'block' }} 
-              />
-            </div>
-            
-            <h2 style={{
-              fontSize: '3rem',
-              marginBottom: '10px',
-              fontWeight: 'bold',
-              fontFamily: 'Arial, sans-serif'
-            }}>{project.title}</h2>
-            
-            <p style={{
-              fontSize: '1.5rem',
-              lineHeight: '1.8',
-              marginBottom: '30px',
-              fontFamily: 'Lato, sans-serif',
-              fontWeight: '300',
-              color: '#666'
-            }}>{project.description}</p>
-            
-            {project.fullContent && (
-              <div style={{
-                fontSize: '1.2rem',
-                lineHeight: '1.8',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>
-                {project.fullContent}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-      
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes slideUp {
-          from { 
-            opacity: 0;
-            transform: translate(-50%, -45%);
-          }
-          to { 
-            opacity: 1;
-            transform: translate(-50%, -50%);
-          }
-        }
-      `}</style>
-    </>
-  );
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  return (
+    <div className="modal-backdrop" onClick={onClose}>
+      <div
+        className="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label={t(project.title)}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button type="button" className="modal-close" onClick={onClose} aria-label={t({ pt: 'Fechar', en: 'Close' })}>✕</button>
+        <img src={project.image} alt={t(project.title)} className="modal-img" />
+        <h2 className="modal-title">{t(project.title)}</h2>
+        <p className="modal-lede">{t(project.description)}</p>
+        {project.fullContent && <div className="modal-body">{t(project.fullContent)}</div>}
+      </div>
+    </div>
+  );
 };
 
 const ProjectsArtGrid = () => {
-  const [expandedProject, setExpandedProject] = useState(null);
+  const t = useT();
+  const [expandedProject, setExpandedProject] = useState(null);
 
-  const artProjects = [
-    { 
-      image: muralColetivoImg,
-      title: 'Mural Coletivo',
-      description: 'Leitura da Cidade e Criação de Mural no Morro da Conceição',
-      fullContent: (
-        <>
-          <strong>A atividade Leitura da Cidade e Criação de Mural no Morro da Conceição foi uma experiência com os alunos da disciplina de Metodologia 3, no segundo semestre do ano de 2025, que uniu arte, território e memória.</strong> A proposta consistiu em uma vivência de leitura da cidade a partir da observação e da escuta sensível do Morro da Conceição, um espaço simbólico na cidade de Recife.
-          <br/><br/>
-          A primeira etapa aconteceu com uma caminhada pela escadaria do morro, conduzida pelo artista plástico e guia de turismo Fernando Lopes, que tem desenvolvido intervenções artísticas ligadas à história da comunidade. Durante o percurso, os estudantes foram convidados a perceber as cores, formas, sons e narrativas do lugar — elementos que revelam o diálogo entre fé, resistência e ancestralidade presentes no cotidiano dos moradores.
-          <br/><br/>
-          A partir dessa imersão, foi proposto um exercício criativo no qual os estudantes desenvolveram projetos de murais inspirados na paisagem e na vivência local. Em grupos, apresentaram suas propostas à comunidade, que participou ativamente do processo, escolhendo a imagem que mais representava o sentimento e a identidade do Morro da Conceição. Com base nessa escolha, foi realizada uma oficina coletiva para a execução do mural, transformando a arte em um gesto de diálogo e pertencimento. A pintura agora integra a paisagem do bairro e fará parte do projeto de Fernando Lopes “Turismo Recife no Morro”, que valoriza o patrimônio material e imaterial da região.
-          <br/><br/>
-          <strong>Conceito da Arte:</strong>
-          <br/>
-          A arte desenvolvida para o mural tem como tema “Raízes e Espiritualidade”, propondo uma reflexão visual sobre o encontro entre crenças, culturas e memórias. O pássaro representa o sincretismo religioso, símbolo da liberdade e da convivência entre diferentes tradições de fé. A flor de lírio, associada ao Candomblé, surge acolhida pelo Cristianismo, expressando o respeito e a integração entre as matrizes afro-brasileiras e cristãs que coexistem no morro. Ao fundo, o símbolo da Sankofa, originário da cultura Akan, convida a olhar para as raízes ancestrais como forma de compreender o presente e construir o futuro. O mural, portanto, não é apenas uma pintura, mas uma celebração das identidades e espiritualidades que habitam o Morro da Conceição — um tributo à força de sua comunidade e à potência transformadora da arte como linguagem de diálogo.
-          <br/><br/>
-          <strong>Artistas envolvidos:</strong>
-          <ul style={{ marginLeft: '20px', listStyleType: 'disc' }}>
-            <li>Agatha Maria Silva de Oliveira</li>
-            <li>Alessandro José da Silva</li>
-            <li>Ana Júlia Ribeiro de Macedo</li>
-            <li>Caliel Feijó de Melo Silva</li>
-            <li>Cauã Teixeira Lima</li>
-            <li>Elbany Gomes dos Santos</li>
-            <li>Emanuelle Karla Basílio Ferreira Silva</li>
-            <li>Flávia Alessandra Almeida Araújo</li>
-            <li>Ilane Ribeiro Hirata</li>
-            <li>Isadora de Melo Polesi</li>
-            <li>Julie Kunii</li>
-            <li>Letícia Vitória Campos de Melo</li>
-            <li>Lírio Amarílis Matias</li>
-            <li>Lucas Ângelo Botelho</li>
-            <li>Maria Eduarda Malaquias Rodrigues</li>
-            <li>Maria Joana Pequeno Aureliano da Silva</li>
-            <li>Samuel Victor Guedes de Queiroz</li>
-            <li>Vinicius Diniz Nunes</li>
-          </ul>
-        </>
-      )
-    },
-    { 
-      image: coletivoSemearteImg,
-      title: 'Coletivo Semearte',
-      description: 'Iniciativa cultural que promove arte e educação através de ações comunitárias e workshops criativos.',
-      fullContent: 'Detalhes expandidos sobre o Coletivo Semearte, sua missão, projetos realizados, impacto na comunidade, etc.' // Este texto ainda precisa ser atualizado
-    },
-    { 
-      image: oficinaEscolinhaImg,
-      title: 'Oficina Escolinha',
-      description: 'Programa educacional voltado para o desenvolvimento artístico e criativo de crianças.',
-      fullContent: (
-        <>
-          <strong>Prática na Escolinha de Artes do Recife – 2025</strong>
-          <br/><br/>
-          A turma de Metodologia realizou uma atividade em parceria com a Escolinha de Arte do Recife, vivenciando práticas e metodologias do ensino não formal em Artes Visuais. Os alunos conheceram a proposta pedagógica e a importância histórica da instituição, e realizaram uma visita de reconhecimento do espaço.
-          <br/><br/>
-          Em seguida, os alunos dividiram-se em três grupos para planejar e desenvolver oficinas destinadas às crianças atendidas pela Escolinha. A experiência destacou a sensibilização, a livre expressão e a inclusão como fundamentos do processo educativo em arte.
-        </>
-      )
-    }
-  ];
+  return (
+    <section className="page">
+      <header className="page-head">
+        <p className="eyebrow">{t({ pt: 'artes', en: 'arts' })}</p>
+        <h1 className="page-title">{t({ pt: 'Artes', en: 'Arts' })}</h1>
+        <p className="page-lede">
+          {t({
+            pt: 'Ilustração, muralismo e arte-educação: um pouco do que eu crio com as mãos e com as pessoas.',
+            en: 'Illustration, murals and art education: a bit of what I make with my hands and with people.',
+          })}
+        </p>
+      </header>
 
-  return (
-    <div style={{
-      width: '100%',
-      minHeight: '100vh',
-      padding: '80px 60px',
-      backgroundColor: '#ffffff'
-    }}>
-      {/* Grid de Arte */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-        gap: '40px',
-        maxWidth: '1400px',
-        margin: '0 auto'
-      }}>
-        {artProjects.map((project, index) => (
-          <ArtTile 
-            key={index}
-            imageSrc={project.image}
-            title={project.title}
-            description={project.description}
-            onClick={() => setExpandedProject(project)}
-          />
-        ))}
-      </div>
-      
-      {/* Modal expandido */}
-      <ExpandedModal 
-        project={expandedProject}
-        onClose={() => setExpandedProject(null)}
-      />
-    </div>
-  );
+      <div className="art-grid">
+        {artProjects.map((project) => (
+          <ArtTile
+            key={project.image}
+            imageSrc={project.image}
+            title={t(project.title)}
+            description={t(project.description)}
+            onClick={() => setExpandedProject(project)}
+          />
+        ))}
+      </div>
+
+      {expandedProject && (
+        <ExpandedModal
+          project={expandedProject}
+          onClose={() => setExpandedProject(null)}
+        />
+      )}
+    </section>
+  );
 };
 
 export default ProjectsArtGrid;

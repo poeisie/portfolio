@@ -1,514 +1,194 @@
 import React from 'react';
 import fotoUrl from '../assets/foto.jpg';
+import { useT } from '../prefs.jsx';
+
+const bio = {
+  pt: 'Oi! Sou Caliel, artista visual e dev fullstack em formação. Estudo Análise e Desenvolvimento de Sistemas na CESAR School e Artes Visuais na UFPE, e adoro transitar entre esses dois mundos: do rascunho e do protótipo no Figma até o código rodando. Já trabalhei com Python, Java, TypeScript, React Native e bancos de dados, e também levo arte e educação para escolas e comunidades.',
+  en: "Hi! I'm Caliel, a visual artist and fullstack developer in training. I study Systems Analysis and Development at CESAR School and Visual Arts at UFPE, and I love moving between these two worlds: from sketches and Figma prototypes to working code. I've worked with Python, Java, TypeScript, React Native and databases, and I also bring art and education to schools and communities.",
+};
+
+const experience = [
+  {
+    title: { pt: 'pesquisa e desenvolvimento mobile', en: 'research & mobile development' },
+    org: 'WING Games',
+    date: { pt: 'abr 2026 - atual', en: 'apr 2026 - present' },
+    text: {
+      pt: 'Faço parte de um grupo de pesquisa que cria um app gamificado de alfabetização para crianças neurodivergentes. Desenvolvo telas e componentes em React Native e TypeScript, para Android e iOS, sempre pensando em acessibilidade.',
+      en: "I'm part of a research group creating a gamified literacy app for neurodivergent kids. I build screens and components with React Native and TypeScript for Android and iOS, always with accessibility in mind.",
+    },
+  },
+  {
+    title: { pt: 'estágio em cultura e arte-educação', en: 'cultural intern & art educator' },
+    org: 'prefeitura do recife',
+    date: { pt: 'mai 2025 - atual', en: 'may 2025 - present' },
+    text: {
+      pt: 'Levo atividades culturais para escolas e comunidades: oficinas, eventos e exposições que aproximam as pessoas da arte e da educação, com criatividade e inclusão no centro de tudo.',
+      en: 'I bring cultural activities to schools and communities: workshops, events and exhibitions that bring people closer to art and education, with creativity and inclusion at the heart of it all.',
+    },
+  },
+  {
+    title: { pt: 'residência em desenvolvimento de software', en: 'software development resident' },
+    org: 'residência tecnológica do porto digital',
+    date: { pt: 'fev 2025 - atual', en: 'feb 2025 - present' },
+    text: {
+      pt: 'Desenvolvo soluções para empresas parceiras do Porto Digital: no back-end com Java Spring Boot e APIs REST, e no front-end com Angular e TypeScript. Participo do ciclo todo do produto, do protótipo no Figma ao deploy e ao pitch final.',
+      en: "I build software for Porto Digital partner companies: back-end with Java Spring Boot and REST APIs, front-end with Angular and TypeScript. I'm part of the whole product cycle, from Figma prototypes to deploy and the final pitch.",
+    },
+  },
+  {
+    title: { pt: 'pesquisa e educação em museu', en: 'museum researcher & educator' },
+    org: 'museu espaço ciência PE',
+    date: { pt: 'fev 2025', en: 'feb 2025' },
+    text: {
+      pt: 'Conduzi visitas guiadas para públicos bem diversos, ministrei oficinas e pesquisei formas de deixar as visitas e os conteúdos educativos ainda melhores, despertando a curiosidade por ciência e tecnologia.',
+      en: 'I led guided tours for all kinds of visitors, ran workshops and researched ways to make the tours and educational content even better, sparking curiosity about science and technology.',
+    },
+  },
+  {
+    title: { pt: 'estágio', en: 'internship' },
+    org: 'smart SSMA consulting',
+    date: { pt: 'abr 2022 - jul 2022', en: 'apr 2022 - jul 2022' },
+    text: {
+      pt: 'Pesquisei legislação de educação a distância, fiz uma formação para criação de cursos online e cuidei do ambiente virtual de aprendizagem, mantendo os cursos de segurança do trabalho sempre atualizados.',
+      en: 'I researched distance-learning legislation, trained as an online course creator and took care of the virtual learning environment, keeping the occupational safety courses up to date.',
+    },
+  },
+];
+
+const education = [
+  {
+    title: { pt: 'Tecnólogo em Análise e Desenvolvimento de Sistemas', en: 'Associate Degree in Systems Analysis and Development' },
+    org: 'CESAR School',
+    date: { pt: 'fev 2025 - atual', en: 'feb 2025 - present' },
+  },
+  {
+    title: { pt: 'Licenciatura em Artes Visuais', en: 'Visual Arts Teaching Degree' },
+    org: 'UFPE - Universidade Federal de Pernambuco',
+    date: { pt: 'mai 2023 - atual', en: 'may 2023 - present' },
+  },
+  {
+    title: { pt: 'Técnico em Segurança do Trabalho', en: 'Occupational Safety Technician' },
+    org: 'IFPE - Instituto Federal de Pernambuco',
+    date: { pt: 'mar 2018 - dez 2022', en: 'mar 2018 - dec 2022' },
+  },
+];
+
+const skills = [
+  { name: { pt: 'Front-end e Mobile', en: 'Front-end & Mobile' }, list: 'Angular, React, React Native, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, Storybook, Vite' },
+  { name: { pt: 'Back-end e Dados', en: 'Back-end & Data' }, list: 'Java, Spring Boot, REST APIs, Python, Pandas, C, PostgreSQL, MySQL' },
+  {
+    name: { pt: 'Design e UX', en: 'Design & UX' },
+    list: {
+      pt: 'UI Design, UX Design, Wireframing, Prototipação, User Flows, Arquitetura da Informação, Design Thinking, Figma',
+      en: 'UI Design, UX Design, Wireframing, Prototyping, User Flows, Information Architecture, Design Thinking, Figma',
+    },
+  },
+  { name: { pt: 'Arte e Mídia', en: 'Art & Media' }, list: 'Photoshop, Illustrator, Procreate, After Effects, Premiere Pro, Canva' },
+  { name: { pt: 'Ferramentas', en: 'Tools' }, list: 'Git, Bash, Vercel, Notion, Google Workspace, Microsoft Office' },
+];
+
+const languages = [
+  { name: { pt: 'Português', en: 'Portuguese' }, level: { pt: 'nativo', en: 'native' } },
+  { name: { pt: 'Inglês', en: 'English' }, level: 'B2', href: 'https://cert.efset.org/okTrTT' },
+  { name: 'Libras', level: 'A1' },
+  { name: { pt: 'Francês', en: 'French' }, level: 'A1' },
+];
+
+const links = [
+  { label: 'GitHub', href: 'https://github.com/poeisie', external: true },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/calielfeijo/', external: true },
+  { label: 'calielfeijo@gmail.com', href: 'mailto:calielfeijo@gmail.com' },
+  { label: '+55 (81) 98165-4408', href: 'tel:+5581981654408' },
+];
 
 const AboutPage = () => {
+  const t = useT();
+
   return (
-    <div style={{
-      padding: '60px 80px',
-      minHeight: '100vh',
-      backgroundColor: '#ffffff'
-    }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        
-        {/* HEADER COM FOTO */}
-        <header style={{
-          marginBottom: '50px',
-          paddingBottom: '30px',
-          display: 'flex',
-          gap: '60px',
-          alignItems: 'flex-start'
-        }}>
-          {/* Foto */}
-          <div style={{
-            flex: '0 0 300px',
-            position: 'relative'
-          }}>
-            <div style={{
-              width: '300px',
-              height: '400px',
-              backgroundColor: '#e0e0e0',
-              overflow: 'hidden'
-            }}>
-              <img 
-                src={fotoUrl} 
-                alt="Caliel Feijó"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover'
-                }}
-              />
-            </div>
-          </div>
-
-          {/* Informacoes */}
-          <div style={{ flex: '1' }}>
-            <h1 style={{
-              fontSize: '4rem',
-              color: '#1a1a1a',
-              marginBottom: '15px',
-              letterSpacing: '-1px',
-              fontFamily: '"Jacquard 12", serif' 
-            }}>Caliel Feijó</h1>
-            
-            <h2 style={{
-              fontSize: '0.9rem',
-              color: '#666',
-              marginBottom: '20px',
-              fontStyle: 'italic',
-              fontFamily: 'Lato, sans-serif',
-              fontWeight: '300'
-            }}>⚧ enby, they/them</h2>
-            
-            <p style={{
-              fontSize: '1rem',
-              color: '#666',
-              lineHeight: '1.8',
-              fontFamily: 'Lato, sans-serif',
-              fontWeight: '300',
-              textTransform: 'lowercase',
-            }}>
-              Fullstack Developer in Training with experience in interdisciplinary projects implementing creative educational programs in institutional and community environments. Skilled in design tools as well as web technologies including Node.js, React, Angular, and TypeScript. Currently focused on front-end development and C programming.
-          </p>
-          </div>
-        </header>
-
-        <div style={{ maxWidth: '900px' }}>
-          {/* EXPERIENCIA */}
-          <section style={{ marginBottom: '50px' }}>
-            <h3 style={{
-              fontSize: '2rem',
-              color: '#1a1a1a',
-              marginBottom: '25px',
-              paddingBottom: '10px',
-              borderBottom: '1px solid #e0e0e0',
-              letterSpacing: '1px',
-              fontFamily: '"Jacquarda Bastarda 9", cursive'
-            }}>Experience</h3>
-            
-            <div style={{
-              marginBottom: '30px',
-              paddingLeft: '20px',
-              borderLeft: '2px solid #1a1a1a'
-            }}>
-              <div style={{
-                fontSize: '1.2rem',
-                color: '#1a1a1a',
-                marginBottom: '5px',
-                fontWeight: 'bold',
-                letterSpacing: '3px',
-                textTransform: 'uppercase',
-                fontFamily: 'Arial, serif'
-              }}>cultural intern & art educator</div>
-              <div style={{
-                fontSize: '1rem',
-                color: '#666',
-                marginBottom: '5px',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300',
-                fontStyle: 'italic',
-              }}>prefeitura do recife</div>
-              <div style={{
-                fontSize: '0.9rem',
-                color: '#999',
-                marginBottom: '10px',
-                fontStyle: 'italic',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>may 2025 - present</div>
-              <p style={{
-                fontSize: '0.95rem',
-                color: '#666',
-                lineHeight: '1.6',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300',
-                textTransform: 'lowercase',
-              }}>
-                Responsible for promoting and developing cultural activities in educational institutions and local communities. Provide access to art, culture, and education through workshops, events, exhibitions, and other initiatives that enrich the lives of participants and the community. Foster creativity, learning, and social inclusion through cultural engagement.
-            </p>
-            </div>
-
-            <div style={{
-              marginBottom: '30px',
-              paddingLeft: '20px',
-              borderLeft: '2px solid #1a1a1a'
-            }}>
-              <div style={{
-                fontSize: '1.2rem',
-                color: '#1a1a1a',
-                marginBottom: '5px',
-                fontWeight: 'bold',
-                letterSpacing: '3px',
-                textTransform: 'uppercase',
-                fontFamily: 'Arial, serif'
-              }}>Museum Researcher and Educator</div>
-              <div style={{
-                fontSize: '1rem',
-                color: '#666',
-                marginBottom: '5px',
-                fontFamily: 'Lato, sans-serif',
-                fontStyle: 'italic',
-                fontWeight: '300'
-              }}>museu espaço ciência PE</div>
-              <div style={{
-                fontSize: '0.9rem',
-                color: '#999',
-                marginBottom: '10px',
-                fontStyle: 'italic',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>feb 2025</div>
-              <p style={{
-                fontSize: '0.95rem',
-                color: '#666',
-                lineHeight: '1.6',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300',
-                marginTop: '10px',
-                textTransform: 'lowercase',
-              }}>
-                Responsible for communication, research, and educational workshops. Provided guided tours for diverse audiences, fostering interest in science and technology. Conducted research to improve the museum's guided tours and educational content, contributing to the institution's mission of promoting scientific knowledge.
-              </p>
-            </div>
-
-            <div style={{
-              marginBottom: '30px',
-              paddingLeft: '20px',
-              borderLeft: '2px solid #1a1a1a'
-            }}>
-              <div style={{
-                fontSize: '1.2rem',
-                color: '#1a1a1a',
-                marginBottom: '5px',
-                fontWeight: 'bold',
-                letterSpacing: '3px',
-                textTransform: 'uppercase',
-                fontFamily: 'Arial, serif'
-              }}>Internship</div>
-              <div style={{
-                fontSize: '1rem',
-                color: '#666',
-                marginBottom: '5px',
-                fontFamily: 'Lato, sans-serif',
-                fontStyle: 'italic',
-                fontWeight: '300'
-              }}>smart SSMA consulting</div>
-              <div style={{
-                fontSize: '0.9rem',
-                color: '#999',
-                marginBottom: '10px',
-                fontStyle: 'italic',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>april 2022 - july 2022</div>
-              <p style={{
-                fontSize: '0.95rem',
-                color: '#666',
-                lineHeight: '1.6',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300',
-                marginTop: '10px',
-                textTransform: 'lowercase',
-              }}>
-                Conducted research on legislation related to distance education; participated in a training course for virtual course content creators; studied technical standards and other publications related to occupational safety courses; managed and updated the virtual learning environment with developed content; performed administrative tasks and provided administrative support.
-            </p>
-            </div>
-          </section>
-
-          {/* EDUCACAO */}
-          <section style={{ marginBottom: '50px' }}>
-            <h3 style={{
-              fontSize: '2rem',
-              color: '#1a1a1a',
-              marginBottom: '25px',
-              paddingBottom: '10px',
-              borderBottom: '1px solid #e0e0e0',
-              letterSpacing: '1px',
-              fontFamily: '"Jacquarda Bastarda 9", cursive'
-            }}>Education</h3>
-            
-            <div style={{
-              marginBottom: '30px',
-              paddingLeft: '20px',
-              borderLeft: '2px solid #1a1a1a'
-            }}>
-              <div style={{
-                fontSize: '1.2rem',
-                color: '#1a1a1a',
-                marginBottom: '5px',
-                fontWeight: 'bold',
-                fontFamily: 'Arial, sans-serif'
-              }}>Licenciatura em Artes Visuais</div>
-              <div style={{
-                fontSize: '1rem',
-                color: '#666',
-                marginBottom: '5px',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>UFPE - Universidade Federal de Pernambuco</div>
-              <div style={{
-                fontSize: '0.9rem',
-                color: '#999',
-                marginBottom: '10px',
-                fontStyle: 'italic',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>2023 - Presente</div>
-            </div>
-
-            <div style={{
-              marginBottom: '30px',
-              paddingLeft: '20px',
-              borderLeft: '2px solid #1a1a1a'
-            }}>
-              <div style={{
-                fontSize: '1.2rem',
-                color: '#1a1a1a',
-                marginBottom: '5px',
-                fontWeight: 'bold',
-                fontFamily: 'Arial, sans-serif'
-              }}>Tecnologo em Analise e Desenvolvimento de Sistemas</div>
-              <div style={{
-                fontSize: '1rem',
-                color: '#666',
-                marginBottom: '5px',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>CESAR School</div>
-              <div style={{
-                fontSize: '0.9rem',
-                color: '#999',
-                marginBottom: '10px',
-                fontStyle: 'italic',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>2025 - Presente</div>
-            </div>
-
-            <div style={{
-              marginBottom: '30px',
-              paddingLeft: '20px',
-              borderLeft: '2px solid #1a1a1a'
-            }}>
-              <div style={{
-                fontSize: '1.2rem',
-                color: '#1a1a1a',
-                marginBottom: '5px',
-                fontWeight: 'bold',
-                fontFamily: 'Arial, sans-serif'
-              }}>Tecnico em Seguranca do Trabalho</div>
-              <div style={{
-                fontSize: '1rem',
-                color: '#666',
-                marginBottom: '5px',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>IFPE - Instituto Federal de Pernambuco</div>
-              <div style={{
-                fontSize: '0.9rem',
-                color: '#999',
-                marginBottom: '10px',
-                fontStyle: 'italic',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>2018 - 2022</div>
-            </div>
-          </section>
-
-          {/* HABILIDADES */}
-          <section style={{ marginBottom: '50px' }}>
-            <h3 style={{
-              fontSize: '1.8rem',
-              color: '#1a1a1a',
-              marginBottom: '25px',
-              paddingBottom: '10px',
-              borderBottom: '1px solid #e0e0e0',
-              textTransform: 'uppercase',
-              letterSpacing: '1px',
-              fontFamily: 'Arial, sans-serif'
-            }}>Habilidades</h3>
-            
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '20px',
-              marginTop: '20px'
-            }}>
-              <div style={{
-                backgroundColor: '#f5f5f5',
-                padding: '15px',
-                borderRadius: '4px',
-                borderLeft: '3px solid #1a1a1a'
-              }}>
-                <div style={{
-                  fontSize: '1rem',
-                  color: '#1a1a1a',
-                  marginBottom: '8px',
-                  fontWeight: 'bold',
-                  fontFamily: 'Arial, sans-serif'
-                }}>Design & Arte</div>
-                <div style={{
-                  fontSize: '0.85rem',
-                  color: '#666',
-                  fontFamily: 'Lato, sans-serif',
-                  fontWeight: '300'
-                }}>Photoshop, Illustrator, Procreate</div>
-              </div>
-              
-              <div style={{
-                backgroundColor: '#f5f5f5',
-                padding: '15px',
-                borderRadius: '4px',
-                borderLeft: '3px solid #1a1a1a'
-              }}>
-                <div style={{
-                  fontSize: '1rem',
-                  color: '#1a1a1a',
-                  marginBottom: '8px',
-                  fontWeight: 'bold',
-                  fontFamily: 'Arial, sans-serif'
-                }}>Desenvolvimento</div>
-                <div style={{
-                  fontSize: '0.85rem',
-                  color: '#666',
-                  fontFamily: 'Lato, sans-serif',
-                  fontWeight: '300'
-                }}>HTML, CSS, JavaScript, React</div>
-              </div>
-              
-              <div style={{
-                backgroundColor: '#f5f5f5',
-                padding: '15px',
-                borderRadius: '4px',
-                borderLeft: '3px solid #1a1a1a'
-              }}>
-                <div style={{
-                  fontSize: '1rem',
-                  color: '#1a1a1a',
-                  marginBottom: '8px',
-                  fontWeight: 'bold',
-                  fontFamily: 'Arial, sans-serif'
-                }}>UI/UX Design</div>
-                <div style={{
-                  fontSize: '0.85rem',
-                  color: '#666',
-                  fontFamily: 'Lato, sans-serif',
-                  fontWeight: '300'
-                }}>Figma, Adobe XD, Sketch</div>
-              </div>
-              
-              <div style={{
-                backgroundColor: '#f5f5f5',
-                padding: '15px',
-                borderRadius: '4px',
-                borderLeft: '3px solid #1a1a1a'
-              }}>
-                <div style={{
-                  fontSize: '1rem',
-                  color: '#1a1a1a',
-                  marginBottom: '8px',
-                  fontWeight: 'bold',
-                  fontFamily: 'Arial, sans-serif'
-                }}>Outros</div>
-                <div style={{
-                  fontSize: '0.85rem',
-                  color: '#666',
-                  fontFamily: 'Lato, sans-serif',
-                  fontWeight: '300'
-                }}>Git, Node.js, Responsive Design</div>
-              </div>
-            </div>
-          </section>
-
-          {/* LINKS */}
-          <section style={{ marginBottom: '50px' }}>
-            <h3 style={{
-              fontSize: '1.8rem',
-              color: '#1a1a1a',
-              marginBottom: '25px',
-              paddingBottom: '10px',
-              borderBottom: '1px solid #e0e0e0',
-              textTransform: 'uppercase',
-              letterSpacing: '1px',
-              fontFamily: 'Arial, sans-serif'
-            }}>Links</h3>
-            
-            <div style={{
-              display: 'flex',
-              gap: '30px',
-              flexWrap: 'wrap',
-              marginTop: '20px'
-            }}>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                color: '#666',
-                fontSize: '0.95rem',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>
-                <span style={{ color: '#1a1a1a' }}>►</span>
-                <a href="https://github.com/poeisie" target="_blank" rel="noopener noreferrer" style={{
-                  color: '#666',
-                  textDecoration: 'none',
-                  transition: 'color 0.3s ease'
-                }}>GitHub</a>
-              </div>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                color: '#666',
-                fontSize: '0.95rem',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>
-                <span style={{ color: '#1a1a1a' }}>►</span>
-                <a href="https://www.linkedin.com/in/calielfeijo/" target="_blank" rel="noopener noreferrer" style={{
-                  color: '#666',
-                  textDecoration: 'none',
-                  transition: 'color 0.3s ease'
-                }}>LinkedIn</a>
-              </div>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                color: '#666',
-                fontSize: '0.95rem',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>
-                <span style={{ color: '#1a1a1a' }}>►</span>
-                <a href="mailto:calielfeijo@gmail.com" style={{
-                  color: '#666',
-                  textDecoration: 'none',
-                  transition: 'color 0.3s ease'
-                }}>calielfeijo@gmail.com</a>
-              </div>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                color: '#666',
-                fontSize: '0.95rem',
-                fontFamily: 'Lato, sans-serif',
-                fontWeight: '300'
-              }}>
-                <span style={{ color: '#1a1a1a' }}>►</span>
-                <a href="tel:+5581981654408" style={{
-                  color: '#666',
-                  textDecoration: 'none',
-                  transition: 'color 0.3s ease'
-                }}>+55 (81) 98165-4408</a>
-              </div>
-            </div>
-          </section>
+    <section className="page">
+      <header className="about-head">
+        <img src={fotoUrl} alt="Caliel Feijó" className="about-photo" />
+        <div>
+          <p className="eyebrow">{t({ pt: 'sobre', en: 'about' })}</p>
+          <h1 className="page-title">Caliel Feijó</h1>
+          <p className="pronouns">⚧ {t({ pt: 'pessoa não-binária, they/them', en: 'enby, they/them' })}</p>
+          <p className="about-bio lower">{t(bio)}</p>
         </div>
+      </header>
 
-      </div>
-    </div>
+      <section className="section">
+        <h2 className="section-title">{t({ pt: 'Experiência', en: 'Experience' })}</h2>
+        <div className="entries">
+          {experience.map((item) => (
+            <article className="entry" key={item.org}>
+              <h3 className="entry-title">{t(item.title)}</h3>
+              <p className="entry-org">{item.org}</p>
+              <p className="entry-date">{t(item.date)}</p>
+              <p className="entry-text lower">{t(item.text)}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <h2 className="section-title">{t({ pt: 'Formação', en: 'Education' })}</h2>
+        <div className="entries">
+          {education.map((item) => (
+            <article className="entry" key={item.org}>
+              <h3 className="entry-title">{t(item.title)}</h3>
+              <p className="entry-org">{item.org}</p>
+              <p className="entry-date">{t(item.date)}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <h2 className="section-title">{t({ pt: 'Habilidades', en: 'Skills' })}</h2>
+        <div className="skills">
+          {skills.map((skill) => (
+            <div className="skill" key={skill.list.en || skill.list}>
+              <p className="skill-name">{t(skill.name)}</p>
+              <p className="skill-list">{t(skill.list)}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <h2 className="section-title">{t({ pt: 'Idiomas', en: 'Languages' })}</h2>
+        <ul className="language-list">
+          {languages.map((language) => (
+            <li key={language.level + t(language.name)}>
+              <span className="language-name">{t(language.name)}</span>{' '}
+              {language.href ? (
+                <a href={language.href} target="_blank" rel="noopener noreferrer" className="arrow-link">
+                  {t(language.level)} ↗
+                </a>
+              ) : (
+                <span className="language-level">{t(language.level)}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="section">
+        <h2 className="section-title">Links</h2>
+        <ul className="link-list">
+          {links.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </section>
   );
 };
 

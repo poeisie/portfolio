@@ -1,228 +1,118 @@
 import React from 'react';
+import { useT } from '../prefs.jsx';
 
-const ProjectCard = ({ title, description, technologies, githubLink, liveLink }) => {
-  const [isHovered, setIsHovered] = React.useState(false);
+const projects = [
+  {
+    title: 'Integra+',
+    description: {
+      pt: 'Projeto da Residência do Porto Digital voltado para saúde e bem-estar (ODS 3). Foi selecionado entre 56 equipes para o Demoday, premiado na Mostra Expotech Educação (REC’n’Play) e aprovado na pré-incubação do Porto Digital 2026!',
+      en: "A Porto Digital Residency project focused on health and well-being (SDG 3). It was selected among 56 teams for Demoday, awarded at the Expotech Education Showcase (REC’n’Play) and accepted into Porto Digital's 2026 pre-incubation program!",
+    },
+    technologies: ['Figma', 'Illustrator', 'Canva'],
+    liveLink: 'https://drive.google.com/drive/folders/1SxRB9e3zzwiGbbVyNI8yAMH8cgTENMT_?usp=sharing',
+    liveLabel: { pt: 'Ver projeto →', en: 'See project →' },
+  },
+  {
+    title: 'TransCare',
+    description: {
+      pt: 'Uma plataforma de saúde pensada para pessoas LGBTQIAPN+. Cuidei do front-end (componentes, serviços e rotas) e fui SCRUM Master do time.',
+      en: "A health platform designed for LGBTQIAPN+ people. I handled the front-end (components, services and routes) and was the team's SCRUM Master.",
+    },
+    technologies: ['Angular', 'TypeScript', 'Spring Boot', 'SCRUM'],
+    githubLink: 'https://github.com/netokemon/projeto-fundamentos-de-software',
+  },
+  {
+    title: 'Vem pra Arena',
+    description: {
+      pt: 'Um sistema para gerenciar eventos e ingressos esportivos. Trabalhei no front-end e no design, e ajudei a estruturar o banco de dados.',
+      en: 'A system for managing sports events and tickets. I worked on the front-end and design, and helped structure the database.',
+    },
+    technologies: ['Java', 'Spring Boot', 'PostgreSQL'],
+    githubLink: 'https://github.com/poeisie/poo-project',
+  },
+  {
+    title: 'Lógica à La Carte',
+    description: {
+      pt: 'Um jogo de terminal que ensina Lógica Proposicional de um jeito divertido. Ficou em 2º lugar na Tech Night e levou Melhor Jogo PIF na Tech Design Showcase da CESAR School.',
+      en: "A terminal game that teaches propositional logic in a fun way. It took 2nd place at Tech Night and won Best PIF Game at CESAR School's Tech Design Showcase.",
+    },
+    technologies: ['C', 'CLI'],
+    githubLink: 'https://github.com/giumari18/projeto-de-pif',
+  },
+  {
+    title: 'Chronicles of Lumi',
+    description: {
+      pt: 'Meu projeto pessoal: um jogo de plataforma 2D em pixel art preto e branco, com movimento, colisão e física feitos do zero.',
+      en: 'My personal project: a 2D platformer in black-and-white pixel art, with movement, collision and physics built from scratch.',
+    },
+    technologies: ['Python', 'Pygame Zero', 'Pixel Art'],
+    githubLink: 'https://github.com/poeisie/chronicles-of-lumi',
+  },
+  {
+    title: { pt: 'Gestão de Restaurante', en: 'Restaurant Manager' },
+    description: {
+      pt: 'Um sistema CRUD completo para facilitar a rotina de um restaurante, com processamento de dados em Pandas.',
+      en: "A full CRUD system to make a restaurant's daily routine easier, with data processing in Pandas.",
+    },
+    technologies: ['Python', 'Pandas'],
+    githubLink: 'https://github.com/netokemon/projeto-crud-fp',
+  },
+];
 
-  return (
-    <div 
-      style={{
-        backgroundColor: '#f5f5f5',
-        border: `1px solid ${isHovered ? '#1a1a1a' : '#e0e0e0'}`,
-        borderRadius: '8px',
-        padding: '30px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
-        minHeight: '280px',
-        transform: isHovered ? 'translateY(-5px)' : 'translateY(0)',
-        boxShadow: isHovered ? '0 12px 24px rgba(0,0,0,0.1)' : 'none'
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div>
-        <h3 style={{
-          fontSize: '1.5rem',
-          color: '#1a1a1a',
-          marginBottom: '15px',
-          fontWeight: 'bold',
-          fontFamily: 'Arial, sans-serif'
-        }}>{title}</h3>
-        
-        <p style={{
-          fontSize: '0.95rem',
-          color: '#666',
-          lineHeight: '1.6',
-          marginBottom: '20px',
-          fontFamily: 'Lato, sans-serif',
-          fontWeight: '300'
-        }}>{description}</p>
-        
-        <div style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '8px',
-          marginBottom: '20px'
-        }}>
-          {technologies.map((tech, index) => (
-            <span key={index} style={{
-              backgroundColor: '#ffffff',
-              color: '#1a1a1a',
-              padding: '5px 12px',
-              borderRadius: '4px',
-              fontSize: '0.8rem',
-              border: '1px solid #e0e0e0',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px',
-              fontFamily: 'Lato, sans-serif',
-              fontWeight: '300'
-            }}>{tech}</span>
-          ))}
-        </div>
-      </div>
-      
-      <div style={{
-        display: 'flex',
-        gap: '15px',
-        paddingTop: '20px',
-        borderTop: '1px solid #e0e0e0'
-      }}>
-        {githubLink && (
-          <a 
-            href={githubLink} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            style={{
-              color: '#666',
-              textDecoration: 'none',
-              fontSize: '0.9rem',
-              transition: 'color 0.3s ease, transform 0.3s ease',
-              display: 'inline-flex',
-              alignItems: 'center',
-              fontFamily: 'Lato, sans-serif',
-              fontWeight: '300'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.color = '#1a1a1a';
-              e.target.style.transform = 'translateX(3px)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.color = '#666';
-              e.target.style.transform = 'translateX(0)';
-            }}
-          >
-            GitHub →
-          </a>
-        )}
-        {liveLink && (
-          <a 
-            href={liveLink} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            style={{
-              color: '#666',
-              textDecoration: 'none',
-              fontSize: '0.9rem',
-              transition: 'color 0.3s ease, transform 0.3s ease',
-              display: 'inline-flex',
-              alignItems: 'center',
-              fontFamily: 'Lato, sans-serif',
-              fontWeight: '300'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.color = '#1a1a1a';
-              e.target.style.transform = 'translateX(3px)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.color = '#666';
-              e.target.style.transform = 'translateX(0)';
-            }}
-          >
-            Live Demo →
-          </a>
-        )}
-      </div>
+const ProjectCard = ({ title, description, technologies, githubLink, liveLink, liveLabel }) => (
+  <article className="card">
+    <h3 className="card-title">{title}</h3>
+    <p className="card-text">{description}</p>
+    <div className="tags">
+      {technologies.map((tech) => (
+        <span className="tag" key={tech}>{tech}</span>
+      ))}
     </div>
-  );
-};
+    <div className="card-links">
+      {githubLink && (
+        <a href={githubLink} target="_blank" rel="noopener noreferrer" className="arrow-link">
+          GitHub →
+        </a>
+      )}
+      {liveLink && (
+        <a href={liveLink} target="_blank" rel="noopener noreferrer" className="arrow-link">
+          {liveLabel}
+        </a>
+      )}
+    </div>
+  </article>
+);
 
 const ProjectsDevGrid = () => {
-  const projects = [
-    {
-      title: 'Portfolio Website',
-      description: 'Site de portfolio responsivo com design moderno e animações suaves. Desenvolvido com React e CSS Grid.',
-      technologies: ['React', 'CSS3', 'JavaScript'],
-      githubLink: 'https://github.com/usuario/portfolio',
-      liveLink: 'https://portfolio.com'
-    },
-    {
-      title: 'E-commerce Dashboard',
-      description: 'Dashboard administrativo para e-commerce com gráficos interativos e gerenciamento de produtos.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Chart.js'],
-      githubLink: 'https://github.com/usuario/ecommerce-dashboard',
-      liveLink: 'https://demo.com'
-    },
-    {
-      title: 'Task Manager App',
-      description: 'Aplicativo de gerenciamento de tarefas com drag-and-drop, filtros e categorias personalizadas.',
-      technologies: ['React', 'TypeScript', 'Firebase'],
-      githubLink: 'https://github.com/usuario/task-manager',
-      liveLink: null
-    },
-    {
-      title: 'Weather App',
-      description: 'Aplicativo de previsão do tempo com integração de API externa e geolocalização automática.',
-      technologies: ['JavaScript', 'HTML5', 'CSS3', 'API'],
-      githubLink: 'https://github.com/usuario/weather-app',
-      liveLink: 'https://weather-demo.com'
-    },
-    {
-      title: 'Blog Platform',
-      description: 'Plataforma de blog com sistema de posts, comentários e autenticação de usuários.',
-      technologies: ['React', 'Express', 'PostgreSQL'],
-      githubLink: 'https://github.com/usuario/blog-platform',
-      liveLink: null
-    },
-    {
-      title: 'Chat Application',
-      description: 'Aplicativo de chat em tempo real com salas privadas e notificações push.',
-      technologies: ['React', 'Socket.io', 'Node.js'],
-      githubLink: 'https://github.com/usuario/chat-app',
-      liveLink: 'https://chat-demo.com'
-    }
-  ];
+  const t = useT();
 
   return (
-    <div style={{
-      width: '100%',
-      minHeight: '100vh',
-      padding: '60px 80px',
-      backgroundColor: '#ffffff'
-    }}>
-      {/* Header */}
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto 50px'
-      }}>
-        <h1 style={{
-          fontSize: '3rem',
-          color: '#1a1a1a',
-          marginBottom: '15px',
-          letterSpacing: '-1px',
-          fontFamily: 'Arial, sans-serif'
-        }}>Projetos de Desenvolvimento</h1>
-        <p style={{
-          fontSize: '1.1rem',
-          color: '#666',
-          maxWidth: '600px',
-          fontFamily: 'Lato, sans-serif',
-          fontWeight: '300'
-        }}>
-          Uma coleção dos meus projetos de desenvolvimento web, aplicações e experimentos com código.
+    <section className="page">
+      <header className="page-head">
+        <p className="eyebrow">dev_</p>
+        <h1 className="page-title">{t({ pt: 'Projetos', en: 'Projects' })}</h1>
+        <p className="page-lede">
+          {t({
+            pt: 'Coisas que construí na faculdade, na residência e por pura diversão. Clica para ver o código!',
+            en: "Things I've built at school, during my residency and just for fun. Click through to see the code!",
+          })}
         </p>
-      </div>
+      </header>
 
-      {/* Projects Grid */}
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-        gap: '30px'
-      }}>
-        {projects.map((project, index) => (
-          <ProjectCard 
-            key={index}
-            title={project.title}
-            description={project.description}
+      <div className="card-grid">
+        {projects.map((project) => (
+          <ProjectCard
+            key={project.githubLink || project.liveLink}
+            title={t(project.title)}
+            description={t(project.description)}
             technologies={project.technologies}
             githubLink={project.githubLink}
             liveLink={project.liveLink}
+            liveLabel={t(project.liveLabel)}
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
