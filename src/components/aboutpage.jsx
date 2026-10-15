@@ -1,6 +1,8 @@
 import React from 'react';
 import fotoUrl from '../assets/foto.jpg';
 import { useT } from '../prefs.jsx';
+import Window from './Window';
+import SectionHead from './SectionHead';
 
 const bio = {
   pt: 'Oi! Sou Caliel, artista visual e dev fullstack em formação. Estudo Análise e Desenvolvimento de Sistemas na CESAR School e Artes Visuais na UFPE, e adoro transitar entre esses dois mundos: do rascunho e do protótipo no Figma até o código rodando. Já trabalhei com Python, Java, TypeScript, React Native e bancos de dados, e também levo arte e educação para escolas e comunidades.',
@@ -105,89 +107,93 @@ const AboutPage = () => {
   const t = useT();
 
   return (
-    <section className="page">
-      <header className="about-head">
-        <img src={fotoUrl} alt="Caliel Feijó" className="about-photo" />
-        <div>
-          <p className="eyebrow">{t({ pt: 'sobre', en: 'about' })}</p>
-          <h1 className="page-title">Caliel Feijó</h1>
+    <section id="about" className="section">
+      <SectionHead
+        page="01"
+        title={t({ pt: 'Sobre', en: 'About' })}
+        note={t({ pt: 'prazer!', en: 'nice to meet you!' })}
+      />
+
+      <div className="about-intro">
+        <figure className="polaroid taped">
+          <img src={fotoUrl} alt="Caliel Feijó" />
+          <figcaption className="note">{t({ pt: 'eu :)', en: 'me :)' })}</figcaption>
+        </figure>
+
+        <Window title={t({ pt: 'sobre.txt', en: 'about.txt' })} className="about-bio-win">
+          <h3 className="about-name">Caliel Feijó</h3>
           <p className="pronouns">⚧ {t({ pt: 'pessoa não-binária, they/them', en: 'enby, they/them' })}</p>
-          <p className="about-bio lower">{t(bio)}</p>
-        </div>
-      </header>
-
-      <section className="section">
-        <h2 className="section-title">{t({ pt: 'Experiência', en: 'Experience' })}</h2>
-        <div className="entries">
-          {experience.map((item) => (
-            <article className="entry" key={item.org}>
-              <h3 className="entry-title">{t(item.title)}</h3>
-              <p className="entry-org">{item.org}</p>
-              <p className="entry-date">{t(item.date)}</p>
-              <p className="entry-text lower">{t(item.text)}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section">
-        <h2 className="section-title">{t({ pt: 'Formação', en: 'Education' })}</h2>
-        <div className="entries">
-          {education.map((item) => (
-            <article className="entry" key={item.org}>
-              <h3 className="entry-title">{t(item.title)}</h3>
-              <p className="entry-org">{item.org}</p>
-              <p className="entry-date">{t(item.date)}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section">
-        <h2 className="section-title">{t({ pt: 'Habilidades', en: 'Skills' })}</h2>
-        <div className="skills">
-          {skills.map((skill) => (
-            <div className="skill" key={skill.list.en || skill.list}>
-              <p className="skill-name">{t(skill.name)}</p>
-              <p className="skill-list">{t(skill.list)}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="section">
-        <h2 className="section-title">{t({ pt: 'Idiomas', en: 'Languages' })}</h2>
-        <ul className="language-list">
-          {languages.map((language) => (
-            <li key={language.level + t(language.name)}>
-              <span className="language-name">{t(language.name)}</span>{' '}
-              {language.href ? (
-                <a href={language.href} target="_blank" rel="noopener noreferrer" className="arrow-link">
-                  {t(language.level)} ↗
+          <p className="about-bio">{t(bio)}</p>
+          <ul className="link-list">
+            {links.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  {link.label}
                 </a>
-              ) : (
-                <span className="language-level">{t(language.level)}</span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </section>
+              </li>
+            ))}
+          </ul>
+        </Window>
+      </div>
 
-      <section className="section">
-        <h2 className="section-title">Links</h2>
-        <ul className="link-list">
-          {links.map((link) => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <div className="about-grid">
+        <Window title={t({ pt: 'experiencia.log', en: 'experience.log' })} className="about-exp-win">
+          <ol className="entries">
+            {experience.map((item) => (
+              <li className="entry" key={item.org}>
+                <p className="entry-date">{t(item.date)}</p>
+                <h3 className="entry-title">{t(item.title)}</h3>
+                <p className="entry-org">{item.org}</p>
+                <p className="entry-text">{t(item.text)}</p>
+              </li>
+            ))}
+          </ol>
+        </Window>
+
+        <div className="about-side">
+          <Window title={t({ pt: 'formacao.txt', en: 'education.txt' })}>
+            <ul className="entries entries--compact">
+              {education.map((item) => (
+                <li className="entry" key={item.org}>
+                  <p className="entry-date">{t(item.date)}</p>
+                  <h3 className="entry-title">{t(item.title)}</h3>
+                  <p className="entry-org">{item.org}</p>
+                </li>
+              ))}
+            </ul>
+          </Window>
+
+          <Window title={t({ pt: 'idiomas.cfg', en: 'languages.cfg' })}>
+            <ul className="language-list">
+              {languages.map((language) => (
+                <li key={language.level + t(language.name)}>
+                  <span className="language-name">{t(language.name)}</span>
+                  {language.href ? (
+                    <a href={language.href} target="_blank" rel="noopener noreferrer" className="language-level arrow-link">
+                      {t(language.level)} ↗
+                    </a>
+                  ) : (
+                    <span className="language-level">{t(language.level)}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </Window>
+        </div>
+      </div>
+
+      <div className="skills">
+        <h3 className="skills-title note">{t({ pt: 'coisas que eu sei usar:', en: 'things i know how to use:' })}</h3>
+        {skills.map((skill) => (
+          <div className="skill-card" key={skill.list.en || skill.list}>
+            <p className="skill-name">{t(skill.name)}</p>
+            <p className="skill-list">{t(skill.list)}</p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };

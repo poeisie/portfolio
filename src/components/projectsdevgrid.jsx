@@ -1,5 +1,7 @@
 import React from 'react';
 import { useT } from '../prefs.jsx';
+import Window from './Window';
+import SectionHead from './SectionHead';
 
 const projects = [
   {
@@ -59,16 +61,17 @@ const projects = [
   },
 ];
 
+// Cada projeto é uma ficha pautada
 const ProjectCard = ({ title, description, technologies, githubLink, liveLink, liveLabel }) => (
-  <article className="card">
-    <h3 className="card-title">{title}</h3>
-    <p className="card-text">{description}</p>
-    <div className="tags">
+  <li className="index-card">
+    <h3 className="index-card-title">{title}</h3>
+    <p className="index-card-text">{description}</p>
+    <ul className="tags">
       {technologies.map((tech) => (
-        <span className="tag" key={tech}>{tech}</span>
+        <li className="tag" key={tech}>{tech}</li>
       ))}
-    </div>
-    <div className="card-links">
+    </ul>
+    <div className="index-card-links">
       {githubLink && (
         <a href={githubLink} target="_blank" rel="noopener noreferrer" className="arrow-link">
           GitHub →
@@ -80,38 +83,44 @@ const ProjectCard = ({ title, description, technologies, githubLink, liveLink, l
         </a>
       )}
     </div>
-  </article>
+  </li>
 );
 
 const ProjectsDevGrid = () => {
   const t = useT();
 
   return (
-    <section className="page">
-      <header className="page-head">
-        <p className="eyebrow">dev_</p>
-        <h1 className="page-title">{t({ pt: 'Projetos', en: 'Projects' })}</h1>
-        <p className="page-lede">
-          {t({
-            pt: 'Coisas que construí na faculdade, na residência e por pura diversão. Clica para ver o código!',
-            en: "Things I've built at school, during my residency and just for fun. Click through to see the code!",
+    <section id="dev" className="section">
+      <SectionHead
+        page="03"
+        title={t({ pt: 'Projetos', en: 'Projects' })}
+        note={t({
+          pt: 'coisas que construí na faculdade, na residência e por diversão',
+          en: "things i've built at school, during my residency and for fun",
+        })}
+      />
+
+      <Window title="dev_/" className="folder-win">
+        <p className="folder-status">
+          {projects.length} {t({ pt: 'projetos', en: 'projects' })} · {t({
+            pt: 'clica pra ver o código!',
+            en: 'click through to see the code!',
           })}
         </p>
-      </header>
-
-      <div className="card-grid">
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.githubLink || project.liveLink}
-            title={t(project.title)}
-            description={t(project.description)}
-            technologies={project.technologies}
-            githubLink={project.githubLink}
-            liveLink={project.liveLink}
-            liveLabel={t(project.liveLabel)}
-          />
-        ))}
-      </div>
+        <ul className="index-cards">
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.githubLink || project.liveLink}
+              title={t(project.title)}
+              description={t(project.description)}
+              technologies={project.technologies}
+              githubLink={project.githubLink}
+              liveLink={project.liveLink}
+              liveLabel={t(project.liveLabel)}
+            />
+          ))}
+        </ul>
+      </Window>
     </section>
   );
 };

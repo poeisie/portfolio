@@ -1,34 +1,44 @@
 /* Tokens e base do site: toda cor, fonte e espaçamento sai daqui */
 :root {
-  --paper: #ffffff;
-  --paper-2: #f5f5f3;
-  --ink: #111111;
-  --muted: #5f5f5f;
-  --faint: #9a9a9a;
-  --line: #e6e6e6;
-  --accent: #0000ff;
+  --paper: #efede6;
+  --paper-dot: rgba(20, 20, 20, 0.13);
+  --window: #fbfaf6;
+  --ink: #141414;
+  --muted: #4f4c46;
+  --faint: #8a867d;
+  --rule: rgba(20, 20, 20, 0.12);
+  --accent: #a3161a;
+  --tape: rgba(214, 205, 168, 0.72);
+  --card: #fffdf6;
+  --card-line: rgba(64, 120, 190, 0.18);
+  --shadow: 4px 4px 0 var(--ink);
 
   --font-display: "Jacquard 12", serif;
   --font-gothic: "Jacquarda Bastarda 9", serif;
   --font-body: "Lato", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-label: Arial, Helvetica, sans-serif;
+  --font-pixel: "Silkscreen", "Courier New", monospace;
+  --font-hand: "Reenie Beanie", "Comic Sans MS", cursive;
 
-  --sidebar-width: 260px;
-  --page-pad: clamp(20px, 5vw, 72px);
-  --content-max: 1080px;
+  --page-pad: clamp(16px, 4vw, 56px);
+  --content-max: 1160px;
+  --menubar-h: 40px;
 
   color-scheme: light;
 }
 
-/* Modo noturno: só os tokens mudam */
+/* Modo noturno: o caderno vira papel preto */
 :root[data-theme="dark"] {
-  --paper: #0f0f10;
-  --paper-2: #1b1b1d;
-  --ink: #ededed;
-  --muted: #a9a9ad;
-  --faint: #75757a;
-  --line: #2b2b2e;
-  --accent: #8c9bff;
+  --paper: #121211;
+  --paper-dot: rgba(236, 235, 230, 0.1);
+  --window: #1a1a18;
+  --ink: #ecebe6;
+  --muted: #b5b2aa;
+  --faint: #807d76;
+  --rule: rgba(236, 235, 230, 0.14);
+  --accent: #ea5a5e;
+  --tape: rgba(150, 140, 110, 0.45);
+  --card: #1f1e1c;
+  --card-line: rgba(140, 170, 220, 0.12);
 
   color-scheme: dark;
 }
@@ -43,11 +53,15 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--menubar-h) + 16px);
 }
 
 body {
   min-width: 320px;
-  background: var(--paper);
+  background-color: var(--paper);
+  background-image: radial-gradient(var(--paper-dot) 1px, transparent 1.2px);
+  background-size: 22px 22px;
   color: var(--ink);
   font-family: var(--font-body);
   font-weight: 300;
@@ -68,6 +82,11 @@ a {
   text-decoration: none;
 }
 
+ul,
+ol {
+  list-style: none;
+}
+
 button {
   font: inherit;
   color: inherit;
@@ -77,11 +96,15 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px dashed var(--accent);
   outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {

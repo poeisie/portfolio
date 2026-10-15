@@ -5,6 +5,8 @@ import oficinaEscolinhaImg from '../assets/12.jpg';
 import adrastiaImg from '../assets/digital/adrastia.jpg';
 import calielEsbocoImg from '../assets/digital/caliel-esboco.jpg';
 import { useT } from '../prefs.jsx';
+import Window from './Window';
+import SectionHead from './SectionHead';
 
 const muralArtists = [
   'Agatha Maria Silva de Oliveira',
@@ -138,18 +140,22 @@ const artProjects = [
   },
 ];
 
-// Componente para cada tile de arte
-const ArtTile = ({ imageSrc, title, description, onClick }) => (
-  <button type="button" className="art-tile" onClick={onClick}>
-    <img src={imageSrc} alt={title} loading="lazy" />
-    <div className="art-tile-info">
-      <p className="art-tile-title">{title}</p>
-      {description && <p className="art-tile-desc">{description}</p>}
-    </div>
-  </button>
-);
+// Cada arte é uma impressão colada no caderno
+const ArtPrint = ({ project, index, onOpen }) => {
+  const t = useT();
+  return (
+    <li className={`print print--${index % 4}`}>
+      <button type="button" className="print-button" onClick={onOpen}>
+        <span className="print-photo">
+          <img src={project.image} alt={t(project.title)} loading="lazy" />
+        </span>
+        <span className="print-caption">{t(project.title)}</span>
+      </button>
+    </li>
+  );
+};
 
-// Modal expandido
+// Modal expandido, também como janela
 const ExpandedModal = ({ project, onClose }) => {
   const t = useT();
 
@@ -161,7 +167,8 @@ const ExpandedModal = ({ project, onClose }) => {
 
   return (
     <div className="modal-backdrop" onClick={onClose}>
-      <div
+      <Window
+        title={t(project.title)}
         className="modal"
         role="dialog"
         aria-modal="true"
@@ -170,10 +177,10 @@ const ExpandedModal = ({ project, onClose }) => {
       >
         <button type="button" className="modal-close" onClick={onClose} aria-label={t({ pt: 'Fechar', en: 'Close' })}>✕</button>
         <img src={project.image} alt={t(project.title)} className="modal-img" />
-        <h2 className="modal-title">{t(project.title)}</h2>
+        <h3 className="modal-title">{t(project.title)}</h3>
         <p className="modal-lede">{t(project.description)}</p>
         {project.fullContent && <div className="modal-body">{t(project.fullContent)}</div>}
-      </div>
+      </Window>
     </div>
   );
 };
@@ -183,29 +190,34 @@ const ProjectsArtGrid = () => {
   const [expandedProject, setExpandedProject] = useState(null);
 
   return (
-    <section className="page">
-      <header className="page-head">
-        <p className="eyebrow">{t({ pt: 'artes', en: 'arts' })}</p>
-        <h1 className="page-title">{t({ pt: 'Artes', en: 'Arts' })}</h1>
-        <p className="page-lede">
-          {t({
-            pt: 'Ilustração, muralismo e arte-educação: um pouco do que eu crio com as mãos e com as pessoas.',
-            en: 'Illustration, murals and art education: a bit of what I make with my hands and with people.',
+    <section id="arts" className="section">
+      <SectionHead
+        page="02"
+        title={t({ pt: 'Artes', en: 'Arts' })}
+        note={t({ pt: 'clica pra ver de perto!', en: 'click for a closer look!' })}
+      />
+
+      <Window
+        title={t({ pt: 'artes/', en: 'arts/' })}
+        className="folder-win"
+      >
+        <p className="folder-status">
+          {artProjects.length} {t({ pt: 'itens', en: 'items' })} · {t({
+            pt: 'ilustração, muralismo e arte-educação',
+            en: 'illustration, murals and art education',
           })}
         </p>
-      </header>
-
-      <div className="art-grid">
-        {artProjects.map((project) => (
-          <ArtTile
-            key={project.image}
-            imageSrc={project.image}
-            title={t(project.title)}
-            description={t(project.description)}
-            onClick={() => setExpandedProject(project)}
-          />
-        ))}
-      </div>
+        <ul className="prints">
+          {artProjects.map((project, index) => (
+            <ArtPrint
+              key={project.image}
+              project={project}
+              index={index}
+              onOpen={() => setExpandedProject(project)}
+            />
+          ))}
+        </ul>
+      </Window>
 
       {expandedProject && (
         <ExpandedModal

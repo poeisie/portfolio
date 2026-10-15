@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { useT } from '../prefs.jsx';
+import Window from './Window';
+import SectionHead from './SectionHead';
+import PixelIcon from './PixelIcon';
+import calielEsbocoImg from '../assets/digital/caliel-esboco.jpg';
 
 const WHATSAPP_URL = 'https://wa.me/5581981654408';
 
@@ -36,48 +40,72 @@ const ContactPage = () => {
   };
 
   return (
-    <section className="page">
-      <header className="page-head">
-        <p className="eyebrow">{t({ pt: 'contato', en: 'contact' })}</p>
-        <h1 className="page-title">{t({ pt: 'Contato', en: 'Contact' })}</h1>
-        <p className="page-lede">
-          {t({
-            pt: 'Quer encomendar uma arte, tirar um projeto do papel ou só trocar uma ideia? Me manda uma mensagem!',
-            en: 'Want to commission a piece, build something together or just say hi? Send me a message!',
-          })}
-        </p>
-      </header>
+    <section id="contact" className="section section--contact">
+      <SectionHead
+        page="04"
+        title={t({ pt: 'Contato', en: 'Contact' })}
+        note={t({ pt: 'me chama!', en: 'say hi!' })}
+      />
 
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="field">
-          <label htmlFor="contact-name">{t({ pt: 'Nome', en: 'Name' })}</label>
-          <input id="contact-name" type="text" name="name" value={formData.name} onChange={handleChange} required />
-        </div>
-        <div className="field">
-          <label htmlFor="contact-email">Email</label>
-          <input id="contact-email" type="email" name="email" value={formData.email} onChange={handleChange} required />
-        </div>
-        <div className="field">
-          <label htmlFor="contact-message">{t({ pt: 'Mensagem', en: 'Message' })}</label>
-          <textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} required rows="6" />
-        </div>
-        <button type="submit" className="btn">{t({ pt: 'Enviar pelo WhatsApp', en: 'Send via WhatsApp' })}</button>
-      </form>
+      <div className="contact-layout">
+        <Window title={t({ pt: 'contato.exe', en: 'contact.exe' })} className="dialog-win">
+          <div className="dialog-head">
+            <PixelIcon name="mail" size={48} />
+            <p>
+              {t({
+                pt: 'Quer encomendar uma arte, tirar um projeto do papel ou só trocar uma ideia? Me manda uma mensagem!',
+                en: 'Want to commission a piece, build something together or just say hi? Send me a message!',
+              })}
+            </p>
+          </div>
 
-      <div className="contact-alt">
-        <p>{t({ pt: 'Ou me encontre por aqui:', en: 'Or find me here:' })}</p>
-        <ul className="link-list">
-          {links.map((link) => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+          <form className="form" onSubmit={handleSubmit}>
+            <div className="field">
+              <label htmlFor="contact-name">{t({ pt: 'Nome', en: 'Name' })}</label>
+              <input id="contact-name" type="text" name="name" value={formData.name} onChange={handleChange} required />
+            </div>
+            <div className="field">
+              <label htmlFor="contact-email">Email</label>
+              <input id="contact-email" type="email" name="email" value={formData.email} onChange={handleChange} required />
+            </div>
+            <div className="field">
+              <label htmlFor="contact-message">{t({ pt: 'Mensagem', en: 'Message' })}</label>
+              <textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} required rows="5" />
+            </div>
+            <div className="form-actions">
+              <button type="submit" className="btn">{t({ pt: 'Enviar pelo WhatsApp', en: 'Send via WhatsApp' })}</button>
+            </div>
+          </form>
+
+          <div className="contact-alt">
+            <p>{t({ pt: 'Ou me encontre por aqui:', en: 'Or find me here:' })}</p>
+            <ul className="link-list">
+              {links.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Window>
+
+        <aside className="contact-aside" aria-hidden="true">
+          <div className="print print--1 contact-print">
+            <span className="print-button">
+              <span className="print-photo">
+                <img src={calielEsbocoImg} alt="" loading="lazy" />
+              </span>
+            </span>
+          </div>
+          <p className="note contact-note">
+            {t({ pt: 'obrigade pela visita! ♱', en: 'thanks for stopping by! ♱' })}
+          </p>
+        </aside>
       </div>
     </section>
   );
